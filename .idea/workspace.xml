@@ -106,7 +106,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.register.html">
+  <component name="RunManager" selected="JavaScript Debug.login.html">
     <configuration name="404.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/404.html">
       <method v="2" />
     </configuration>
@@ -131,8 +131,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.register.html" />
         <item itemvalue="JavaScript Debug.login.html" />
+        <item itemvalue="JavaScript Debug.register.html" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.404.html" />
       </list>
@@ -157,6 +157,9 @@
       <workItem from="1599577464636" duration="5862000" />
       <workItem from="1599584801125" duration="334000" />
       <workItem from="1599585305898" duration="7600000" />
+      <workItem from="1599597807118" duration="50000" />
+      <workItem from="1599608029353" duration="31000" />
+      <workItem from="1599608102009" duration="65000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore file">
       <created>1599524560787</created>

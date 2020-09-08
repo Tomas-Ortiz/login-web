@@ -40,7 +40,7 @@ body {
   margin: 0 0 3vh 0;
 }
 
-.login-form .form-control {
+.register-form .form-control {
   background: #f7f7f7 none repeat scroll 0 0;
   border: 0.1vw solid #d4d4d4;
   border-radius: 0.5vw;
@@ -64,19 +64,19 @@ body {
   margin-bottom: 2%;
 }
 
-.login-form .form-group {
+.register-form .form-group {
   margin-bottom: 2vh;
   margin-left: 10%;
 }
 
-.login-form {
+.register-form {
   text-align: center;
   max-width: 70%;
   margin: 3vh auto;
   margin-top: 6%;
 }
 
-.login-form .btn.btn-primary {
+.register-form .btn.btn-primary {
   background: #141e30 none repeat scroll 0 0;
   border-color: #141e30;
   color: #ffffff;
@@ -87,19 +87,7 @@ body {
   border-radius: 0.5vw;
 }
 
-.forgot {
-  text-align: center;
-  margin-bottom: 3vh;
-  padding-top: 3vw;
-}
-
-.forgot a {
-  text-decoration: none;
-  color: #777777;
-  font-size: 1vw;
-}
-
-.login-form .btn.btn-primary.reset {
+.register-form .btn.btn-primary.reset {
   background: #141e30 none repeat scroll 0 0;
 }
 
@@ -128,27 +116,19 @@ body {
     margin-bottom: 2vh;
   }
 
-  .login-form {
+  .register-form {
     max-width: 90%;
   }
 
-  .login-form .form-control {
+  .register-form .form-control {
     font-size: 1.5vw;
   }
 
-  .login-form .form-group {
+  .register-form .form-group {
     margin-bottom: 2vh;
   }
 
-  .forgot {
-    margin-bottom: 1vh;
-  }
-
-  .forgot a {
-    font-size: 1.5vw;
-  }
-
-  .login-form .btn.btn-primary {
+  .register-form .btn.btn-primary {
     font-size: 2vw;
     width: 20vw;
   }

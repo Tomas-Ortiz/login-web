@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>- Registrarse -</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="icon" href="../media/icon.png">
+
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="register-form">
+    <div class="main-div">
+      <div class="panel">
+        <h2>Registrarse</h2>
+        <hr>
+        <br>
+      </div>
+
+      <form id="Register" onsubmit="">
+        <div class="form-group">
+          <input type="text" class="form-control" id="inputCreateName" placeholder="Nombre completo" required>
+        </div>
+
+        <div class="form-group">
+          <input type="email" class="form-control" id="inputCreateEmail" placeholder="Correo electrónico" required>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" id="inputCreatePassword" placeholder="Contraseña" required>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" id="inputRepeatPassword" placeholder="Confirmar contraseña"
+                 required>
+        </div>
+
+        <!-- Mensajes de alerta ocultos -->
+        <div class="mensajeAlerta alert alert-success">Te has registrado exitósamente, revisa tu correo electrónico para
+          confirmar tu cuenta.
+        </div>
+        <div class="mensajeAlerta alert alert-danger">Hubo un error en el registro, verifique los campos ingresados.
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+      </form>
+
+      <p>ó</p>
+      <a href="login.html">
+        <button class="btn btn-primary">Iniciar sesión</button>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<script rel="script" src="../jQuery/jquery-3.5.1.min.js"></script>
+<script rel="script" src="../bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

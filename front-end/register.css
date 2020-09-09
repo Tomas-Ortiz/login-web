@@ -1,68 +1,4 @@
-/***********GENERAL***********/
-
-@font-face {
-  font-family: Roboto;
-  src: url("../fonts/roboto/Roboto-Regular.ttf");
-}
-
-/***********GENERAL***********/
-
-* {
-  -webkit-user-drag: none;
-  user-select: none;
-  list-style: none;
-  margin: 0;
-  font-family: Roboto, serif;
-}
-
-/***********BODY***********/
-
-body {
-  background: #141E30 no-repeat center; /* fallback for old browsers */
-  background-image: -webkit-linear-gradient(255deg, #141e30, #243b55, #305783); /* Chrome 10-25, Safari 5.1-6 */
-  background-image: linear-gradient(255deg, #141e30, #243b55, #305783); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  background-size: 600% 600%;
-  max-width: 101%;
-  max-height: 100%;
-}
-
-/***********FORM***********/
-
-.form-heading {
-  color: #fff;
-  font-size: 23px;
-}
-
-.panel h2 {
-  color: #444444;
-  font-size: 2vw;
-  margin: 0 0 3vh 0;
-}
-
-.register-form .form-control {
-  background: #f7f7f7 none repeat scroll 0 0;
-  border: 0.1vw solid #d4d4d4;
-  border-radius: 0.5vw;
-  font-size: 1vw;
-  height: 5vh;
-  padding-left: 1vw;
-  width: 90%;
-}
-
-.main-div {
-  background: #ffffff none repeat scroll 0 0;
-  border-radius: 0.5vw;
-  padding: 3vw;
-  margin: auto;
-  max-width: 50%;
-  max-height: 470px;
-}
-
-.main-div p {
-  margin-top: 2%;
-  margin-bottom: 2%;
-}
+/***********REGISTRATION FORM***********/
 
 .register-form .form-group {
   margin-bottom: 2vh;
@@ -71,9 +7,7 @@ body {
 
 .register-form {
   text-align: center;
-  max-width: 70%;
-  margin: 3vh auto;
-  margin-top: 6%;
+  margin: 6% auto 3vh;
 }
 
 .register-form .btn.btn-primary {
@@ -104,32 +38,4 @@ body {
 
 .mensajeAlerta {
   display: none;
-}
-
-/***********SCREEN SIZES***********/
-
-/* Extra small devices (phones, 900px and down) */
-@media only screen and (max-width: 900px) {
-
-  .panel h2 {
-    font-size: 3vw;
-    margin-bottom: 2vh;
-  }
-
-  .register-form {
-    max-width: 90%;
-  }
-
-  .register-form .form-control {
-    font-size: 1.5vw;
-  }
-
-  .register-form .form-group {
-    margin-bottom: 2vh;
-  }
-
-  .register-form .btn.btn-primary {
-    font-size: 2vw;
-    width: 20vw;
-  }
 }

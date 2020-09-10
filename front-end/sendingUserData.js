@@ -10,17 +10,8 @@ function login() {
     contrasenia: contrasenia
   };
 
-  $.ajax({
-    url: url,
-    type: 'post',
-    data: data,
-    success: function (data) {
-      console.log(data);
-    },
-    error: function (data) {
-      console.log(data);
-    }
-  });
+  enviarDatosAjax(url, data, 'post');
+
 }
 
 function register() {
@@ -44,20 +35,27 @@ function register() {
       contraseniaConfirmada: contraseniaConfirmada
     };
 
-    $.ajax({
-      url: url,
-      type: 'post',
-      data: data,
-      success: function (data) {
-        console.log(data);
-      },
-      error: function (data) {
-        console.log(data);
-      }
-    });
+    enviarDatosAjax(url, data, 'post');
+
   } else {
     return false;
   }
+}
+
+function enviarDatosAjax(url, data, type) {
+
+  $.ajax({
+    url: url,
+    type: type,
+    data: data,
+    success: function (data) {
+      console.log(data);
+    },
+    error: function (data) {
+      console.log(data);
+    }
+  });
+
 }
 
 function realizarComprobacionesRegistro(nombreCompleto, contrasenia, contraseniaConfirmada) {

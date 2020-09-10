@@ -24,7 +24,7 @@
         <!--<p>Introduzca su correo y contraseña</p> -->
       </div>
 
-      <form id="Login" action="profile.html" onsubmit="">
+      <form id="Login" action="profile.html" onsubmit="return login();">
         <div class="form-group">
           <input type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" required>
         </div>
@@ -40,7 +40,7 @@
         <button type="submit" class="btn btn-primary"><!--Login-->Iniciar sesión</button>
       </form>
 
-      <p>ó</p>
+      <p>o</p>
       <a href="register.html">
         <button class="btn btn-primary">Registrarse</button>
       </a>
@@ -55,6 +55,7 @@
 
 <script rel="script" src="../jQuery/jquery-3.5.1.min.js"></script>
 <script rel="script" src="../bootstrap/js/bootstrap.min.js"></script>
+<script rel="script" src="sendingUserData.js"></script>
 
 </body>
 </html>

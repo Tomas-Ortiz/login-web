@@ -58,6 +58,7 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -106,7 +107,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.login.html">
+  <component name="RunManager" selected="JavaScript Debug.register.html">
     <configuration name="404.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/404.html">
       <method v="2" />
     </configuration>
@@ -119,6 +120,9 @@
     <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/login.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
+    <configuration name="profile.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/profile.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="register.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/register.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -128,11 +132,13 @@
       <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="JavaScript Debug.login.html" />
       <item itemvalue="JavaScript Debug.register.html" />
+      <item itemvalue="JavaScript Debug.profile.html" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.login.html" />
         <item itemvalue="JavaScript Debug.register.html" />
+        <item itemvalue="JavaScript Debug.profile.html" />
+        <item itemvalue="JavaScript Debug.login.html" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.404.html" />
       </list>
@@ -160,6 +166,8 @@
       <workItem from="1599597807118" duration="50000" />
       <workItem from="1599608029353" duration="31000" />
       <workItem from="1599608102009" duration="65000" />
+      <workItem from="1599740307647" duration="1299000" />
+      <workItem from="1599747779137" duration="9640000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore file">
       <created>1599524560787</created>

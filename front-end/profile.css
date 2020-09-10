@@ -1,0 +1,113 @@
+
+/***********CONTAINER***********/
+
+.profile-container{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+/***********IMAGE AND CHANGE PHOTO BUTTON***********/
+
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .profile-btn {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .profile-btn input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+
+/***********NAVIGATION TABS***********/
+
+.profile-head .nav-tabs{
+    margin-top: 10%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+
+.profile-head .nav-tabs .nav-item {
+    position: absolute;
+    bottom: 2vw;
+}
+
+/***********WORK LINKS UNDER PROFILE PICTURE***********/
+
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+
+/***********ABOUT SECTION***********/
+
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+
+/***********ADAPTABILITY***********/
+
+/* Extra small devices (phones, 900px and down) */
+@media only screen and (max-width: 991px) {
+    .profile-img .profile-btn {
+        margin-top: -32%;
+    }
+}
+
+/* Extra small devices (phones, 700px and down) */
+@media only screen and (max-width: 767px) {
+    .profile-img .profile-btn {
+        margin-top: -13%;
+    }
+
+    .profile-head .nav-tabs {
+        margin-top: 15%;
+    }
+}

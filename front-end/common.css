@@ -66,7 +66,7 @@ body {
     margin-bottom: 2%;
 }
 
-
+/***********ADAPTABILITY***********/
 /* Extra small devices (phones, 900px and down) */
 @media only screen and (max-width: 900px) {
 
@@ -91,4 +91,5 @@ body {
         font-size: 2vw;
         width: 20vw;
     }
+
 }

@@ -1,11 +1,18 @@
+const pool = require('../data/connection');
+
 const router = app => {
 
-  app.get('/', (req, res) => {
-    res.send({
-      mensaje: 'Node.js y express funcionando'
+  app.get('/users', (req, res) => {
+
+    const query = 'SELECT * FROM users';
+    pool.query(query, (error, result) => {
+      if (error) {
+        console.log(`Error en la consulta: ${error}`);
+        throw error;
+      }
+      res.send(result);
     });
   });
-
 
 
 };

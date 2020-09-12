@@ -1,6 +1,5 @@
 // Importar módulos de node
 const express = require('express');
-const mysql = require('mysql');
 // Middleware de análisis corporal (extrae y analiza las solicitudes entrantes en json)
 const bodyParser = require('body-parser');
 const routes = require('./routes/routes');

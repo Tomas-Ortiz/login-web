@@ -3,7 +3,7 @@ function login() {
   let email = $("#inputEmail").val();
   let contrasenia = $("#inputPassword").val();
 
-  const url = 'http://localhost:63342/api/login';
+  const url = 'http://localhost:3001/api/login';
 
   const data = {
     email: email,
@@ -26,7 +26,7 @@ function register() {
 
   if (datosValidos) {
 
-    const url = 'http://localhost:63342/api/register';
+    const url = 'http://localhost:3001/api/register';
 
     const data = {
       nombreCompleto: nombreCompleto,
@@ -42,11 +42,11 @@ function register() {
   }
 }
 
-function enviarDatosAjax(url, data, type) {
+function enviarDatosAjax(url, data, method) {
 
   $.ajax({
     url: url,
-    type: type,
+    method: method,
     data: data,
     success: function (data) {
       console.log(data);

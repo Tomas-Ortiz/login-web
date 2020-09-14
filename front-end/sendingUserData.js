@@ -31,11 +31,23 @@ function register() {
     const data = {
       nombreCompleto: nombreCompleto,
       email: email,
-      contrasenia: contrasenia,
-      contraseniaConfirmada: contraseniaConfirmada
+      contrasenia: contrasenia
     };
 
-    enviarDatosAjax(url, data, 'post');
+    let resultado = enviarDatosAjax(url, data, 'post');
+
+    if (resultado.estado === 'ok') {
+
+      limpiarCamposRegistro();
+      setTimeout(() => alert(resultado.mensaje));
+
+      return true;
+    }
+
+    alert(resultado.mensaje);
+    limpiarContraseñasRegitro();
+
+    return false;
 
   } else {
     return false;
@@ -44,18 +56,21 @@ function register() {
 
 function enviarDatosAjax(url, data, method) {
 
+  let resultado = '';
+
   $.ajax({
     url: url,
     method: method,
+    async: false,
     data: data,
     success: function (data) {
-      console.log(data);
+      resultado = data;
     },
     error: function (data) {
-      console.log(data);
+      resultado = data;
     }
   });
-
+  return resultado;
 }
 
 function realizarComprobacionesRegistro(nombreCompleto, contrasenia, contraseniaConfirmada) {
@@ -99,4 +114,13 @@ function comprobarNumeros(cadena) {
     }
   }
   return false;
+}
+
+function limpiarCamposRegistro() {
+  $("#Register")[0].reset();
+}
+
+function limpiarContraseñasRegitro() {
+  $("#inputCreatePassword").val('');
+  $("#inputRepeatPassword").val('');
 }

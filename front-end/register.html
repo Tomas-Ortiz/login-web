@@ -24,9 +24,10 @@
         <br>
       </div>
 
-      <form id="Register" onsubmit="return register();">
+      <form id="Register" action="login.html" onsubmit="return register();">
         <div class="form-group">
-          <input type="text" class="form-control" id="inputCreateName" placeholder="Nombre completo" required>
+          <input type="text" class="form-control" id="inputCreateName" placeholder="Nombre completo"
+                 pattern="[A-Za-z0-9 ]{1,25}" required>
         </div>
 
         <div class="form-group">

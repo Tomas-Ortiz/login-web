@@ -13,6 +13,13 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+
+// El servidor permite peticiones del origen localhost:63342
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:63342');
+  next();
+});
+
 // Se envía como argumento el servidor express (app) al router
 routes(app);
 

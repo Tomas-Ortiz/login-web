@@ -24,17 +24,15 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombreCompleto` varchar(25) NOT NULL,
   `email` varchar(40) NOT NULL,
-  `contraseña` varchar(30) NOT NULL,
+  `contraseña` varchar(300) NOT NULL,
   `confirmado` tinyint(1) DEFAULT 0,
   `activo` tinyint(1) DEFAULT 0,
   `token` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `users` */
-
-insert  into `users`(`id`,`nombreCompleto`,`email`,`contraseña`,`confirmado`,`activo`,`token`) values (1,'Matías Perez','matiasperez95@hotmail.com','MatiasPerez95abc',0,0,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

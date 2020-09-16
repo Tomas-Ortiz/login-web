@@ -1,3 +1,6 @@
+// Router es una clase de express
+const {Router} = require('express');
+const router = Router();
 const pool = require('../data/connection');
 
 //Función hash para encriptar contraseñas
@@ -7,83 +10,93 @@ const bcrypt = require('bcrypt');
 // Cuanto más alto es el número, más tiempo se requiere para calcular el hash asociado a la password
 const BCRYPT_SALT_ROUNDS = 12;
 
-const router = app => {
+// El servidor permite peticiones del origen localhost:63342
+router.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:63342');
+  next();
+});
 
-  app.get('/api/users/', (req, res) => {
+// INICIAR SESIÓN USUARIO
+router.post('/api/login', (req, res) => {
 
 
-  });
+});
 
-  app.post('/api/register', (req, res) => {
+router.get('/api/prueba', (req, res) => {
+  res.send({estado: 'ok', mensaje: 'peticion recibida'})
+});
 
-    let mensaje = '', estado = '', resultado = '', query;
+// REGISTRAR USUARIO
+router.post('/api/register', (req, res) => {
 
-    // Antes de insertar al usuario, se debe verificar si no existe ya el email ingresado
+  let mensaje = '', estado = '', resultado = '', query;
 
-    query = 'SELECT email FROM users WHERE email = ?';
+  // Antes de insertar al usuario, se debe verificar si no existe ya el email ingresado
 
-    pool.query(query, req.body.email, (error, result) => {
+  query = 'SELECT email FROM users WHERE email = ?';
 
-      if (result.length > 0) {
+  pool.query(query, req.body.email, (error, result) => {
 
-        resultado = {
-          mensaje: "El email ya existe, intenta con otro diferente.",
-          estado: "error"
-        };
+    if (result.length > 0) {
 
-        res.send(resultado);
+      resultado = {
+        mensaje: "El email ya existe, intenta con otro diferente.",
+        estado: "error"
+      };
 
-      } else {
+      res.send(resultado);
 
-        const user = {
-          nombreCompleto: req.body.nombreCompleto,
-          email: req.body.email,
-          contraseña: req.body.contrasenia,
-          activo: 1
-        };
+    } else {
 
-        //Encriptación de la contraseña
-        bcrypt.hash(user.contraseña, BCRYPT_SALT_ROUNDS, (error, hashedPassword) => {
+      const user = {
+        nombreCompleto: req.body.nombreCompleto,
+        email: req.body.email,
+        contraseña: req.body.contrasenia,
+        activo: 1
+      };
 
-          if (error) {
+      //Encriptación de la contraseña
+      bcrypt.hash(user.contraseña, BCRYPT_SALT_ROUNDS, (error, hashedPassword) => {
+
+        if (error) {
+
+          resultado = {
+            mensaje: "Error en el encriptado de la contraseña.",
+            estado: "error"
+          };
+
+          res.send(resultado);
+
+        } else {
+
+          user.contraseña = hashedPassword;
+
+          query = 'INSERT INTO users SET ?';
+
+          pool.query(query, user, (error, result) => {
+
+            if (error) {
+              mensaje = "Error al registrar al usuario.";
+              estado = "error";
+            } else {
+              console.log("Se insertó el usuario con id ", result.insertId);
+              mensaje = `Usuario ${user.nombreCompleto} registrado exitosamente.`;
+              estado = "ok";
+            }
 
             resultado = {
-              mensaje: "Error en el encriptado de la contraseña.",
-              estado: "error"
+              mensaje: mensaje,
+              estado: estado
             };
 
             res.send(resultado);
 
-          } else {
-
-            user.contraseña = hashedPassword;
-
-            query = 'INSERT INTO users SET ?';
-
-            pool.query(query, user, (error, result) => {
-
-              if (error) {
-                mensaje = "Error al registrar al usuario.";
-                estado = "error";
-              } else {
-                mensaje = `Usuario ${user.nombreCompleto} registrado exitosamente.`;
-                estado = "ok";
-              }
-
-              resultado = {
-                mensaje: mensaje,
-                estado: estado
-              };
-
-              res.send(resultado);
-
-            });
-          }
-        });
-      }
-    });
+          });
+        }
+      });
+    }
   });
-};
+});
 
-// Se exporta la constante router para permitir referenciarla desde otro archivo (app.js)
+// Se exporta la constante router para permitir requerirla desde otro archivo
 module.exports = router;

@@ -22,9 +22,7 @@ function register() {
   let contraseniaConfirmada = $("#inputRepeatPassword").val();
 
   //retorna true si los datos ingresados son válidos
-  let datosValidos = realizarComprobacionesRegistro(nombreCompleto, contrasenia, contraseniaConfirmada);
-
-  if (datosValidos) {
+  if (inputsAreValid()) {
 
     const url = 'http://localhost:3000/api/register';
 
@@ -38,14 +36,14 @@ function register() {
 
     if (resultado.estado === 'ok') {
 
-      limpiarCamposRegistro();
+        cleanRegistrationInputs();
       setTimeout(() => alert(resultado.mensaje));
 
       return true;
     }
 
     alert(resultado.mensaje);
-    limpiarContraseñasRegitro();
+    cleanPasswords();
 
     return false;
 

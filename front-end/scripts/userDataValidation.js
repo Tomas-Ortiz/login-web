@@ -1,7 +1,26 @@
 
+$("#submitBtn").click(function () {
+    $(".alertMessage").text("");
+});
+
+$(".alertMessage").text('');
+
 /*clean all of the inputs from the registration form*/
 function cleanRegistrationInputs() {
     $("#Register")[0].reset();
+}
+
+function showAlertMessage(message, isError = true){
+    if(isError){
+        $("#failureAlert").show();
+        $("#successAlert").hide();
+    }
+    else{
+        $("#successAlert").show();
+        $("#failureAlert").hide();
+    }
+
+    $(".alertMessage").append(message);
 }
 
 /*Clean the value of the passwords fields*/
@@ -34,7 +53,7 @@ function checkInputs(){
 /*function returns true if both password fields have the same value*/
 function passwordsMatch(){
   if ($("#inputRepeatPassword").val() !== $("#inputCreatePassword").val()) {
-      alert("Las contraseñas no coinciden");
+      showAlertMessage("<br>•Las contraseñas no coinciden");
       return false;
   }
   return true;
@@ -60,14 +79,14 @@ function matchesRegex(inputId, inputValue){
         if (inputValue.match(/^([A-Z][a-z]+([ ]?[a-z]?[A-Z][a-z]+)*)$/gi))
           flag = true;
         else
-            alert("El nombre completo no puede contener números o símbolos");
+            showAlertMessage("<br>•El nombre completo no puede contener números o símbolos");
         break;
 
       case "inputCreateEmail":
         if (inputValue.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g))
           flag = true;
         else
-          alert("El correo ingresado no es válido");
+          showAlertMessage("<br>•El correo ingresado no es válido");
         break;
 
       case "inputCreatePassword":
@@ -78,8 +97,8 @@ function matchesRegex(inputId, inputValue){
         if (inputValue.match(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{10,64})/g))
           flag = true;
         else
-          alert("La contraseña debe tener entre 10 y 64 caracteres, " +
-              "debe tener al menos 1 letra mayúscula, al menos 1 letra minúscula y al menos 1 símbolo");
+          showAlertMessage("<br>•La contraseña debe tener entre 10 y 64 caracteres, " +
+              "debe tener al menos 1 letra mayúscula, al menos 1 letra minúscula y al menos 1 símbolo", false);
         break;
 
       default:

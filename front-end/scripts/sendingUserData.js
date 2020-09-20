@@ -1,16 +1,30 @@
+function getCurrentDate(){
+    return new Date().toLocaleDateString();
+}
+
 function login() {
 
   let email = $("#inputEmail").val();
   let contrasenia = $("#inputPassword").val();
+  let fechaLogin = getCurrentDate().toString();
 
   const url = 'http://localhost:3000/api/login';
 
   const data = {
     email: email,
-    contrasenia: contrasenia
+    contrasenia: contrasenia,
+    fechaLogin: fechaLogin
   };
 
-  enviarDatosAjax(url, data, 'post');
+  let result = enviarDatosAjax(url, data, 'post');
+
+
+  if(result.estado === 'ok'){
+    return true;
+  } else {
+    $(".alert").show();
+    return false;
+  }
 
 }
 
@@ -19,7 +33,7 @@ function register() {
   let nombreCompleto = $("#inputCreateName").val();
   let email = $("#inputCreateEmail").val();
   let contrasenia = $("#inputCreatePassword").val();
-  let contraseniaConfirmada = $("#inputRepeatPassword").val();
+  let fechaCreado = getCurrentDate().toString();
 
   //retorna true si los datos ingresados son válidos
   if (inputsAreValid()) {
@@ -29,20 +43,23 @@ function register() {
     const data = {
       nombreCompleto: nombreCompleto,
       email: email,
-      contrasenia: contrasenia
+      contrasenia: contrasenia,
+      fechaCreado: fechaCreado
     };
 
     let resultado = enviarDatosAjax(url, data, 'post');
 
     if (resultado.estado === 'ok') {
 
-        cleanRegistrationInputs();
-      setTimeout(() => alert(resultado.mensaje));
+      cleanRegistrationInputs();
+      //setTimeout(() => alert(resultado.mensaje));
+      $("#failureAlert").hide();
+      $(".alertMessage").text("Usuario registrado con éxito");
+      $("#successAlert").show();
 
       return true;
     }
 
-    alert(resultado.mensaje);
     cleanPasswords();
 
     return false;
@@ -63,11 +80,9 @@ function enviarDatosAjax(url, data, method) {
     data: data,
     success: function (data) {
       resultado = data;
-      console.log(resultado);
     },
     error: function (data) {
       resultado = data;
-      console.log(resultado);
     }
   });
   return resultado;

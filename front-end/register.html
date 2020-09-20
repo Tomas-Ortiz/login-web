@@ -44,11 +44,19 @@
         </div>
 
         <!-- Mensajes de alerta ocultos -->
-        <div class="mensajeAlerta alert alert-success">Te has registrado exitósamente, revisa tu correo electrónico para
-          confirmar tu cuenta.
+        <div id="failureAlert" class="alert alert-success alertContainer">
+          <h4 class="alert-heading">Éxito</h4>
+          <hr>
+          <div class="alertMessage">Te has registrado exitósamente, revisa tu correo electrónico para
+            confirmar tu cuenta.</div>
         </div>
-        <div class="mensajeAlerta alert alert-danger">Hubo un error en el registro, verifique los campos ingresados.
+
+        <div id="successAlert" class="alert alert-danger alertContainer">
+          <h4 class="alert-heading">Error</h4>
+          <hr>
+          <div class="alertMessage">Hubo un error en el registro, verifique los campos ingresados.</div>
         </div>
+
         <br>
 
         <button type="submit" class="btn btn-primary" id="submitBtn">Registrarse</button>

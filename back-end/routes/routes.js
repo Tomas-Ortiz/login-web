@@ -11,20 +11,52 @@ const bcrypt = require('bcrypt');
 const BCRYPT_SALT_ROUNDS = 12;
 
 // El servidor permite peticiones del origen localhost:63342
+/*
 router.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:63342');
+  res.header('Access-Control-Allow-Origin', '*');
   next();
-});
+});*/
+
+
+
 
 // INICIAR SESIÓN USUARIO
 router.post('/api/login', (req, res) => {
+  let mensaje = '', estado = '', resultado = '', query;
 
+  //Verificar que el correo existe en la base de datos
+
+  query = 'SELECT email FROM users WHERE email = ?';
+
+  pool.query(query, req.body.email, (error, result) => {
+
+    if (result.length > 0) {
+      resultado = {
+        mensaje: "SUCCESS DUDE",
+        estado: "ok"
+      };
+      res.send(resultado);
+
+    }
+    else{
+        resultado = {
+          mensaje: "ERROR, no usernames detected",
+          estado: "error"
+        };
+        res.send(resultado);
+    }
+  });
 
 });
+
+
 
 router.get('/api/prueba', (req, res) => {
-  res.send({estado: 'ok', mensaje: 'peticion recibida'})
+    res.send({estado: 'ok', mensaje: 'peticion recibida'})
 });
+
+
+
 
 // REGISTRAR USUARIO
 router.post('/api/register', (req, res) => {
@@ -41,7 +73,7 @@ router.post('/api/register', (req, res) => {
 
       resultado = {
         mensaje: "El email ya existe, intenta con otro diferente.",
-        estado: "error"
+        estado: "ok"
       };
 
       res.send(resultado);

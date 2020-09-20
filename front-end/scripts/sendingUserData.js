@@ -63,9 +63,11 @@ function enviarDatosAjax(url, data, method) {
     data: data,
     success: function (data) {
       resultado = data;
+      console.log(resultado);
     },
     error: function (data) {
       resultado = data;
+      console.log(resultado);
     }
   });
   return resultado;

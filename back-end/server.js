@@ -1,10 +1,14 @@
 // Importar módulos de node
+const cors = require('cors');
 const express = require('express');
 // Middleware de análisis del cuerpo de las solicitudes (req.body)
 const bodyParser = require('body-parser');
 // Obtener información de las peticiones al servidor
 const morgan = require('morgan');
 const server = express();
+
+server.use(cors());
+
 
 // CONFIGURACIÓN
 server.set('port', 3000);

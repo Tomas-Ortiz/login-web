@@ -10,13 +10,6 @@ const bcrypt = require('bcrypt');
 // Cuanto más alto es el número, más tiempo se requiere para calcular el hash asociado a la password
 const BCRYPT_SALT_ROUNDS = 12;
 
-// El servidor permite peticiones del origen localhost:63342
-/*
-router.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});*/
-
 // INICIAR SESIÓN USUARIO
 router.post('/api/login', (req, res) => {
   let mensaje = '', estado = '', resultado = '', query;
@@ -29,72 +22,84 @@ router.post('/api/login', (req, res) => {
   };
 
   //Search database for the corresponding email and select both hashed password and email
-  query = 'SELECT email,contraseña FROM users WHERE email = ?';
+  query = 'SELECT email,contraseña,activo FROM users WHERE email = ?';
+
   pool.query(query, data.mail, (error, result) => {
 
-    let normalObj = Object.assign({}, result[0]);
-    data.hashedPassword = normalObj.contraseña;
-
     if (result.length > 0) {
-      resultado = {
-        mensaje: "User is trying to log in",
-        estado: "ok"
-      };
 
-      bcrypt.compare(data.password, data.hashedPassword, (error, result) => {
+      let userResult = result[0];
 
-          if (error) {
-              mensaje = "An error has ocurred trying to encrypt your password";
+      data.hashedPassword = userResult.contraseña;
 
-              resultado = {
-                  mensaje: mensaje,
-                  estado: "error"
-              };
+      bcrypt.compare(data.password, data.hashedPassword, (error, isMatch) => {
 
-              console.log(mensaje);
-              res.send(resultado);
-          }
-          else if(result){
+        if (error) {
 
-              console.log("User " + data.mail + " has logged in (" + data.loginDate + ")");
+          resultado = {
+            mensaje: "An error has ocurred trying to encrypt your password",
+            estado: "error"
+          };
 
-              query = 'UPDATE users SET fechaLogin = ? WHERE email = ?';
-              pool.query(query, [data.loginDate, data.mail], (error, result) => {
+          res.send(resultado);
 
-                  if (error) {
-                      mensaje = "Error al intentar iniciar sesión";
-                      estado = "error";
-                  } else {
-                      mensaje = "User " + data.mail + " successfully logged in.";
-                      estado = "ok";
-                  }
+        } else if (isMatch) {
 
-                  resultado = {
-                      mensaje: mensaje,
-                      estado: estado
-                  };
-                  console.log(mensaje);
-                  res.send(resultado);
+          if (userResult.activo === 0) {
 
-              });
+            resultado = {
+              mensaje: "No puedes iniciar sesión debido a que la cuenta se encuentra bloqueada.",
+              estado: "error"
+            };
+
+            res.send(resultado);
 
           } else {
-              mensaje = "Password Incorrect for username: " + data.mail;
-              estado = "error";
+
+            console.log("User " + data.mail + " has logged in (" + data.loginDate + ")");
+
+            query = 'UPDATE users SET fechaLogin = ? WHERE email = ?';
+
+            pool.query(query, [data.loginDate, data.mail], (error, result) => {
+
+              if (error) {
+                mensaje = "Error al actualizar la fecha de login.";
+                estado = "error";
+              } else {
+                mensaje = "User " + data.mail + " successfully logged in.";
+                estado = "ok";
+              }
+
               resultado = {
-                  mensaje: mensaje,
-                  estado: estado
+                mensaje: mensaje,
+                estado: estado
               };
+
               console.log(mensaje);
               res.send(resultado);
+
+            });
           }
-          });
-    }
-    else {
+
+        } else {
+          mensaje = "Correo electrónico o contraseña incorrectos.";
+          estado = "error";
+          resultado = {
+            mensaje: mensaje,
+            estado: estado
+          };
+
+          console.log(mensaje);
+          res.send(resultado);
+        }
+      });
+
+    } else {
       resultado = {
-          mensaje: "ERROR, no users registered with that email",
-          estado: "error"
+        mensaje: "No existe ningún usuario con ese correo electrónico.",
+        estado: "error"
       };
+      res.send(resultado);
     }
   });
 });

@@ -47,23 +47,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>.login-form</find>
-      <find>.login</find>
-      <find>.panel</find>
-      <find>px</find>
-      <find>und</find>
-      <find>idea</find>
-      <find>works</find>
-      <find>console.log</find>
-      <find>fechaCreado</find>
-      <find>SECOND</find>
-      <find>alert(</find>
-      <find>las cont</find>
-      <find>la contrase</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -192,6 +175,9 @@
       <workItem from="1600639753579" duration="3840000" />
       <workItem from="1600705478572" duration="12027000" />
       <workItem from="1600719405608" duration="754000" />
+      <workItem from="1600720662329" duration="6663000" />
+      <workItem from="1600731343353" duration="175000" />
+      <workItem from="1600731561651" duration="383000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore file">
       <created>1599524560787</created>

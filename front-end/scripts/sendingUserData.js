@@ -8,24 +8,37 @@ function login() {
   let contrasenia = $("#inputPassword").val();
   let fechaLogin = getCurrentDate().toString();
 
-  const url = 'http://localhost:3000/api/login';
+  if (inputsLoginAreValid()) {
 
-  const data = {
-    email: email,
-    contrasenia: contrasenia,
-    fechaLogin: fechaLogin
-  };
+    const url = 'http://localhost:3000/api/login';
 
-  let result = enviarDatosAjax(url, data, 'post');
+    const data = {
+      email: email,
+      contrasenia: contrasenia,
+      fechaLogin: fechaLogin
+    };
 
+    let result = enviarDatosAjax(url, data, 'post');
 
-  if (result.estado === 'ok') {
-    return true;
+    if (result.estado === 'ok') {
+      return true;
+    } else {
+      $("#inputPassword").val("");
+
+      colorInput($("#inputEmail"), "red");
+      colorInput($("#inputPassword"), "red");
+
+      $("#alertMessageLogin").text("• " + result.mensaje);
+      $(".alert").show();
+
+      return false;
+    }
   } else {
+    $("#alertMessageLogin").text("• Complete todos los campos solicitados.");
     $(".alert").show();
+
     return false;
   }
-
 }
 
 function register() {
@@ -36,7 +49,7 @@ function register() {
   let fechaCreado = getCurrentDate().toString();
 
   //retorna true si los datos ingresados son válidos y las contraseñas coinciden
-  if (inputsAreValid()) {
+  if (inputsRegisterAreValid()) {
 
     const url = 'http://localhost:3000/api/register';
 
@@ -59,7 +72,7 @@ function register() {
       $("#successAlert").show();
 
     } else {
-      cleanPasswords();
+      cleanPasswordsRegister();
 
       colorInput($("#inputCreateEmail"), "red");
       colorInput($("#inputCreatePassword"), "");

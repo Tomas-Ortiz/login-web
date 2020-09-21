@@ -1,5 +1,5 @@
-function getCurrentDate(){
-    return new Date().toLocaleDateString();
+function getCurrentDate() {
+  return new Date().toLocaleDateString();
 }
 
 function login() {
@@ -19,7 +19,7 @@ function login() {
   let result = enviarDatosAjax(url, data, 'post');
 
 
-  if(result.estado === 'ok'){
+  if (result.estado === 'ok') {
     return true;
   } else {
     $(".alert").show();
@@ -35,7 +35,7 @@ function register() {
   let contrasenia = $("#inputCreatePassword").val();
   let fechaCreado = getCurrentDate().toString();
 
-  //retorna true si los datos ingresados son válidos
+  //retorna true si los datos ingresados son válidos y las contraseñas coinciden
   if (inputsAreValid()) {
 
     const url = 'http://localhost:3000/api/register';
@@ -52,21 +52,25 @@ function register() {
     if (resultado.estado === 'ok') {
 
       cleanRegistrationInputs();
-      //setTimeout(() => alert(resultado.mensaje));
+      cleanInputsColors();
+
       $("#failureAlert").hide();
-      $(".alertMessage").text("Usuario registrado con éxito");
+      $(".alertMessage").text("• Usuario registrado con éxito. Por favor, verifica el email enviado a tu correo para la confirmación de la cuenta.");
       $("#successAlert").show();
 
-      return true;
+    } else {
+      cleanPasswords();
+
+      colorInput($("#inputCreateEmail"), "red");
+      colorInput($("#inputCreatePassword"), "");
+      colorInput($("#inputRepeatPassword"), "");
+
+      $("#successAlert").hide();
+      $(".alertMessage").text("• No se pudo registrar al usuario porque el email ingresado ya existe.");
+      $("#failureAlert").show();
     }
-
-    cleanPasswords();
-
-    return false;
-
-  } else {
-    return false;
   }
+  return false;
 }
 
 function enviarDatosAjax(url, data, method) {

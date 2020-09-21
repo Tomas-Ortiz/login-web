@@ -17,9 +17,6 @@ router.use((req, res, next) => {
   next();
 });*/
 
-
-
-
 // INICIAR SESIÓN USUARIO
 router.post('/api/login', (req, res) => {
   let mensaje = '', estado = '', resultado = '', query;
@@ -103,8 +100,6 @@ router.post('/api/login', (req, res) => {
 });
 
 
-
-
 // REGISTRAR USUARIO
 router.post('/api/register', (req, res) => {
 
@@ -120,7 +115,7 @@ router.post('/api/register', (req, res) => {
 
       resultado = {
         mensaje: "El email ya existe, intenta con otro diferente.",
-        estado: "ok"
+        estado: "error"
       };
 
       res.send(resultado);
@@ -178,10 +173,6 @@ router.post('/api/register', (req, res) => {
   });
 });
 
-
-router.get('/api/prueba', (req, res) => {
-    res.send({estado: 'ok', mensaje: 'peticion recibida'})
-});
 
 /*
 function encryptPassword(password, res){

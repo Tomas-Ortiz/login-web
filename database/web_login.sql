@@ -27,13 +27,12 @@ CREATE TABLE `users` (
   `contraseña` varchar(64) NOT NULL,
   `confirmado` tinyint(1) DEFAULT 0,
   `activo` tinyint(1) NOT NULL DEFAULT 0,
-  `token` varchar(80) DEFAULT 'NULL',
   `rol` varchar(20) NOT NULL DEFAULT 'user',
   `fechaCreado` varchar(30) NOT NULL,
   `fechaLogin` varchar(30) DEFAULT 'NULL',
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQUE` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `users` */
 

@@ -41,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -67,11 +67,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Xampp\htdocs\secure-web-login\front-end\views" />
+      <recent name="D:\Xampp\htdocs\secure-web-login\front-end" />
       <recent name="C:\xampp\htdocs\secure-web-login\database" />
       <recent name="C:\xampp\htdocs\secure-web-login\resources" />
       <recent name="C:\xampp\htdocs\secure-web-login\front-end\scripts" />
-      <recent name="C:\xampp\htdocs\secure-web-login\front-end\style" />
-      <recent name="C:\xampp\htdocs\secure-web-login\media" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -86,20 +86,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.register.html">
+  <component name="RunManager" selected="JavaScript Debug.login.html">
     <configuration name="Login" type="JavascriptDebugType" uri="http://localhost/secure-web-login/front-end/login.html">
       <method v="2" />
     </configuration>
-    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/index.html">
+    <configuration name="login.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/public/login.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/login.html">
+    <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/views/login.html">
       <method v="2" />
     </configuration>
-    <configuration name="profile.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/profile.html">
+    <configuration name="profile.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/views/profile.html">
       <method v="2" />
     </configuration>
-    <configuration name="register.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/register.html">
+    <configuration name="register.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/views/register.html">
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -114,19 +114,19 @@
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Login" />
-      <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="JavaScript Debug.login.html" />
       <item itemvalue="JavaScript Debug.register.html" />
       <item itemvalue="JavaScript Debug.profile.html" />
       <item itemvalue="npm.start" />
+      <item itemvalue="JavaScript Debug.login.html (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.register.html" />
         <item itemvalue="JavaScript Debug.login.html" />
+        <item itemvalue="JavaScript Debug.login.html (1)" />
+        <item itemvalue="JavaScript Debug.register.html" />
         <item itemvalue="npm.start" />
         <item itemvalue="JavaScript Debug.profile.html" />
-        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -177,7 +177,12 @@
       <workItem from="1600719405608" duration="754000" />
       <workItem from="1600720662329" duration="6663000" />
       <workItem from="1600731343353" duration="175000" />
-      <workItem from="1600731561651" duration="383000" />
+      <workItem from="1600731561651" duration="13998000" />
+      <workItem from="1600776492626" duration="6961000" />
+      <workItem from="1600783511364" duration="923000" />
+      <workItem from="1600784468492" duration="2183000" />
+      <workItem from="1600786699260" duration="3353000" />
+      <workItem from="1600790105003" duration="10923000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore file">
       <created>1599524560787</created>

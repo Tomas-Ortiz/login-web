@@ -21,7 +21,9 @@ function login() {
     let result = enviarDatosAjax(url, data, 'post');
 
     if (result.estado === 'ok') {
+
       return true;
+
     } else {
       $("#inputPassword").val("");
 
@@ -84,6 +86,18 @@ function register() {
     }
   }
   return false;
+}
+
+function profile() {
+
+  const url = 'http://localhost:3000/api/profile';
+  const method = 'get';
+
+  $.ajax({
+    url: url,
+    method: method,
+
+  });
 }
 
 function enviarDatosAjax(url, data, method) {

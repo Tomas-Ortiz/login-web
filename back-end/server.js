@@ -1,24 +1,29 @@
-// Importar módulos de node
-const cors = require('cors');
 const express = require('express');
-// Middleware de análisis del cuerpo de las solicitudes (req.body)
 const bodyParser = require('body-parser');
-// Obtener información de las peticiones al servidor
 const morgan = require('morgan');
+const path = require('path');
+// Analizar cookies en las peticiones entrantes
+const cookieParser = require('cookie-parser');
 const server = express();
 
-server.use(cors());
-
+const dir_raiz = 'D:/Xampp/htdocs/secure-web-login/';
 
 // CONFIGURACIÓN
 server.set('port', 3000);
+
 // Dar formato más organizado al json
 server.set('json spaces', 2);
 
+// Ruta archivos estáticos
+server.use(express.static(path.join(dir_raiz, 'front-end')));
+server.set('views', dir_raiz + 'front-end/views/');
+server.engine('html', require('ejs').renderFile);
+server.set('view engine', 'html');
+
 // MIDDLEWARES
 server.use(morgan('dev'));
-// Extraer y analizar las solicitudes entrantes en json
 server.use(bodyParser.json());
+server.use(cookieParser());
 
 // Recibir y comprender los datos que vienen de un formulario HTML (req.body)
 // extended true acepta cualquier tipo, no solo texto
@@ -26,17 +31,18 @@ server.use(bodyParser.urlencoded({
   extended: true,
 }));
 
+const {secret_key} = require('./routes/routes');
+server.set("llave", secret_key);
+
 // RUTAS
-server.use(require('./routes/routes'));
+const {router} = require('./routes/routes');
+server.use(router);
 
 // INICIO DEL SERVIDOR
 server.listen(server.get('port'), (error) => {
-
   if (error) {
     console.log(`Error ${error}`);
     throw error;
   }
-
   console.log(`Servidor escuchando en el puerto ${server.get('port')}`);
 });
-

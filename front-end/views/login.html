@@ -10,8 +10,8 @@
 
   <link rel="stylesheet" href="../resources/bootstrap/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="style/common.css">
-  <link rel="stylesheet" href="style/login.css">
+  <link rel="stylesheet" href="../style/common.css">
+  <link rel="stylesheet" href="../style/login.css">
 </head>
 <body>
 <div class="container">
@@ -23,7 +23,7 @@
         <br>
       </div>
 
-      <form id="Login" action="profile.html" onsubmit="return login();">
+      <form id="Login" action="http://localhost:3000/user/profile" onsubmit="return login();">
         <div class="form-group">
           <input type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" required>
         </div>
@@ -39,11 +39,11 @@
           <div id="alertMessageLogin"></div>
         </div>
         <br>
-        <button type="submit"id="submitLogin" class="btn btn-primary">Iniciar sesión</button>
+        <button type="submit" id="submitLogin" class="btn btn-primary">Iniciar sesión</button>
       </form>
 
       <p>o</p>
-      <a href="register.html">
+      <a href="/register">
         <button class="btn btn-primary">Registrarse</button>
       </a>
 
@@ -57,7 +57,7 @@
 
 <script rel="script" src="../resources/jQuery/jquery-3.5.1.min.js"></script>
 <script rel="script" src="../resources/bootstrap/js/bootstrap.min.js"></script>
-<script rel="script" src="scripts/userDataValidation.js"></script>
-<script rel="script" src="scripts/sendingUserData.js"></script>
+<script rel="script" src="../scripts/userDataValidation.js"></script>
+<script rel="script" src="../scripts/sendingUserData.js"></script>
 </body>
 </html>

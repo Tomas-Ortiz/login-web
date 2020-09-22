@@ -2,16 +2,44 @@
 const {Router} = require('express');
 const router = Router();
 const pool = require('../data/connection');
-
-//Función hash para encriptar contraseñas
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const secret_key = require('../keys/keys');
 
 // saltRounds define el costo de procesado de los datos
 // Cuanto más alto es el número, más tiempo se requiere para calcular el hash asociado a la password
 const BCRYPT_SALT_ROUNDS = 12;
 
+router.get('/login', verificarToken, (req, res) => {
+
+  if (res.resultado.estado === 'ok') {
+    res.redirect('/user/profile');
+  } else {
+    res.render('login.html');
+  }
+
+});
+router.get('/register', (req, res) => {
+
+  res.render('register.html');
+
+});
+
+// Ruta protegida, se requiere JWT para acceder
+// verificarToken actúa como middleware
+router.get('/user/profile', verificarToken, (req, res) => {
+
+  if (res.resultado.estado === 'ok') {
+    res.render('profile.html');
+  } else {
+    res.redirect('/login');
+  }
+
+});
+
 // INICIAR SESIÓN USUARIO
 router.post('/api/login', (req, res) => {
+
   let mensaje = '', estado = '', resultado = '', query;
 
   const data = {
@@ -22,7 +50,7 @@ router.post('/api/login', (req, res) => {
   };
 
   //Search database for the corresponding email and select both hashed password and email
-  query = 'SELECT email,contraseña,activo FROM users WHERE email = ?';
+  query = 'SELECT * FROM users WHERE email = ?';
 
   pool.query(query, data.mail, (error, result) => {
 
@@ -68,11 +96,35 @@ router.post('/api/login', (req, res) => {
               } else {
                 mensaje = "User " + data.mail + " successfully logged in.";
                 estado = "ok";
+
+                try {
+                  // El token del usuario se genera a partir de los datos del mismo y de la clave secreta
+                  // y se almacena en una cookie
+
+                  let userData = {
+                    id: userResult.id,
+                    nombreCompleto: userResult.nombreCompleto,
+                    email: userResult.email,
+                    confirmado: userResult.confirmado,
+                    rol: userResult.rol,
+                    fechaLogin: userResult.fechaLogin
+                  };
+
+                  const userToken = jwt.sign({userData}, secret_key);
+
+                  console.log("Token generado al usuario ", userResult.nombreCompleto, ":", userToken);
+                  /* La cookie no se puede leer usando js (document.cookie), no visibles en frontend
+                   Secure true solo para https */
+                  res.cookie('userToken', userToken);
+
+                } catch (error) {
+                  console.log("Error en el token: ", error);
+                }
               }
 
               resultado = {
                 mensaje: mensaje,
-                estado: estado
+                estado: estado,
               };
 
               console.log(mensaje);
@@ -103,7 +155,6 @@ router.post('/api/login', (req, res) => {
     }
   });
 });
-
 
 // REGISTRAR USUARIO
 router.post('/api/register', (req, res) => {
@@ -170,7 +221,6 @@ router.post('/api/register', (req, res) => {
             };
 
             res.send(resultado);
-
           });
         }
       });
@@ -178,6 +228,43 @@ router.post('/api/register', (req, res) => {
   });
 });
 
+function verificarToken(req, res, next) {
+
+  let resultado, mensaje, estado;
+  const token = req.cookies.userToken;
+
+  try {
+    if (token) {
+      // userData retorna los datos descifrados contenidos en el token
+      jwt.verify(token, secret_key, (error, userData) => {
+        if (error) {
+          mensaje = "Error, token inválido.";
+          estado = "error";
+
+          //res.sendStatus(403);
+        } else {
+          mensaje = "Token válido.";
+          estado = "ok";
+          req.userData = userData;
+        }
+      });
+    } else {
+      mensaje = "Se requiere un token, debes loguearte.";
+      estado = "error";
+      //res.sendStatus(403);
+    }
+  } catch (error) {
+    mensaje = "Ha ocurrido un error inesperado.";
+    estado = "error";
+    //res.sendStatus(500);
+  }
+  resultado = {
+    mensaje: mensaje,
+    estado: estado
+  };
+  res.resultado = resultado;
+  next();
+}
 
 /*
 function encryptPassword(password, res){
@@ -239,4 +326,4 @@ function updateDB(query, fields, successfulMessage, failureMessage, res){
 */
 
 // Se exporta la constante router para permitir requerirla desde otro archivo
-module.exports = router;
+exports.router = router;

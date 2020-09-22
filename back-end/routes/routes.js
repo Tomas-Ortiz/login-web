@@ -228,6 +228,14 @@ router.post('/api/register', (req, res) => {
   });
 });
 
+router.get('/user/logout', (req, res) => {
+
+  res.cookie('userToken', '', {expires: new Date(0)});
+
+  res.redirect('/login');
+
+});
+
 function verificarToken(req, res, next) {
 
   let resultado, mensaje, estado;
@@ -241,7 +249,6 @@ function verificarToken(req, res, next) {
           mensaje = "Error, token inválido.";
           estado = "error";
 
-          //res.sendStatus(403);
         } else {
           mensaje = "Token válido.";
           estado = "ok";
@@ -251,12 +258,10 @@ function verificarToken(req, res, next) {
     } else {
       mensaje = "Se requiere un token, debes loguearte.";
       estado = "error";
-      //res.sendStatus(403);
     }
   } catch (error) {
     mensaje = "Ha ocurrido un error inesperado.";
     estado = "error";
-    //res.sendStatus(500);
   }
   resultado = {
     mensaje: mensaje,
@@ -265,6 +270,7 @@ function verificarToken(req, res, next) {
   res.resultado = resultado;
   next();
 }
+
 
 /*
 function encryptPassword(password, res){

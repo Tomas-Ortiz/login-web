@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const path = require('path');
 // Analizar cookies en las peticiones entrantes
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const secret_key = require('../back-end/keys/keys');
 const server = express();
 
 const dir_raiz = 'D:/Xampp/htdocs/secure-web-login/';
@@ -13,6 +15,13 @@ server.set('port', 3000);
 
 // Dar formato más organizado al json
 server.set('json spaces', 2);
+
+// En la cookie se guarda el sessionID, encriptado a partir del string secret
+server.use(session({
+  secret: secret_key,
+  resave: false,
+  saveUninitialized: false,
+}));
 
 // Ruta archivos estáticos
 server.use(express.static(path.join(dir_raiz, 'front-end')));
@@ -31,7 +40,6 @@ server.use(bodyParser.urlencoded({
   extended: true,
 }));
 
-const {secret_key} = require('./routes/routes');
 server.set("llave", secret_key);
 
 // RUTAS

@@ -4,37 +4,34 @@ const router = Router();
 const pool = require('../data/connection');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const secret_key = require('../keys/keys');
+//const secret_key = require('../keys/keys');
 
 // saltRounds define el costo de procesado de los datos
 // Cuanto más alto es el número, más tiempo se requiere para calcular el hash asociado a la password
 const BCRYPT_SALT_ROUNDS = 12;
 
-router.get('/login', verificarToken, (req, res) => {
+router.get('/register', (req, res) => {
+  res.render('register.html');
+});
 
-  if (res.resultado.estado === 'ok') {
+router.get('/login', verificarSesion, (req, res) => {
+
+  if (res.verificado === 'ok') {
     res.redirect('/user/profile');
   } else {
     res.render('login.html');
   }
-
-});
-router.get('/register', (req, res) => {
-
-  res.render('register.html');
-
 });
 
 // Ruta protegida, se requiere JWT para acceder
 // verificarToken actúa como middleware
-router.get('/user/profile', verificarToken, (req, res) => {
+router.get('/user/profile', verificarSesion, (req, res) => {
 
-  if (res.resultado.estado === 'ok') {
-    res.render('profile.html');
+  if (res.verificado === 'ok') {
+    res.render('profile.html', req.session.user);
   } else {
     res.redirect('/login');
   }
-
 });
 
 // INICIAR SESIÓN USUARIO
@@ -84,8 +81,6 @@ router.post('/api/login', (req, res) => {
 
           } else {
 
-            console.log("User " + data.mail + " has logged in (" + data.loginDate + ")");
-
             query = 'UPDATE users SET fechaLogin = ? WHERE email = ?';
 
             pool.query(query, [data.loginDate, data.mail], (error, result) => {
@@ -110,12 +105,9 @@ router.post('/api/login', (req, res) => {
                     fechaLogin: userResult.fechaLogin
                   };
 
-                  const userToken = jwt.sign({userData}, secret_key);
+                  req.session.user = userData;
 
-                  console.log("Token generado al usuario ", userResult.nombreCompleto, ":", userToken);
-                  /* La cookie no se puede leer usando js (document.cookie), no visibles en frontend
-                   Secure true solo para https */
-                  res.cookie('userToken', userToken);
+                  console.log("Sesion creada al usuario ", req.session.user.email);
 
                 } catch (error) {
                   console.log("Error en el token: ", error);
@@ -230,47 +222,28 @@ router.post('/api/register', (req, res) => {
 
 router.get('/user/logout', (req, res) => {
 
-  res.cookie('userToken', '', {expires: new Date(0)});
+  req.session.destroy(function (err) {
+    console.log("Sesion destruida");
+  });
 
   res.redirect('/login');
 
 });
 
-function verificarToken(req, res, next) {
-
-  let resultado, mensaje, estado;
-  const token = req.cookies.userToken;
+function verificarSesion(req, res, next) {
 
   try {
-    if (token) {
-      // userData retorna los datos descifrados contenidos en el token
-      jwt.verify(token, secret_key, (error, userData) => {
-        if (error) {
-          mensaje = "Error, token inválido.";
-          estado = "error";
-
-        } else {
-          mensaje = "Token válido.";
-          estado = "ok";
-          req.userData = userData;
-        }
-      });
+    if (req.session.user) {
+      res.verificado = "ok";
     } else {
-      mensaje = "Se requiere un token, debes loguearte.";
-      estado = "error";
+      res.verificado = "error";
     }
-  } catch (error) {
-    mensaje = "Ha ocurrido un error inesperado.";
-    estado = "error";
+  } catch (e) {
+    res.verificado = "error";
+    console.log("Error al verificar la sesion del usuario.");
   }
-  resultado = {
-    mensaje: mensaje,
-    estado: estado
-  };
-  res.resultado = resultado;
   next();
 }
-
 
 /*
 function encryptPassword(password, res){

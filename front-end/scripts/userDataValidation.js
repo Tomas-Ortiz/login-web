@@ -1,5 +1,7 @@
 $("#submitRegister").click(function () {
   $(".alertMessage").text("");
+  $("#failureAlert").hide();
+  $("#successAlert").hide();
 });
 
 /*clean all of the inputs from the registration form*/
@@ -20,6 +22,7 @@ function showAlertMessage(message, isError = true) {
     $("#successAlert").hide();
     $("#failureAlert").show();
   }
+
   $(".alertMessage").append(message);
 }
 

@@ -4,7 +4,6 @@ const router = Router();
 const pool = require('../data/connection');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-//const secret_key = require('../keys/keys');
 
 // saltRounds define el costo de procesado de los datos
 // Cuanto más alto es el número, más tiempo se requiere para calcular el hash asociado a la password
@@ -28,7 +27,14 @@ router.get('/login', verificarSesion, (req, res) => {
 router.get('/user/profile', verificarSesion, (req, res) => {
 
   if (res.verificado === 'ok') {
-    res.render('profile.html', req.session.user);
+    res.render('profile.html', {
+      nombre: req.session.user.nombreCompleto,
+      correo: req.session.user.email,
+      confirmado: req.session.user.confirmado,
+      activo: req.session.user.activo,
+      rol: req.session.user.rol,
+      fechaLogin: req.session.user.fechaLogin
+    });
   } else {
     res.redirect('/login');
   }
@@ -92,26 +98,17 @@ router.post('/api/login', (req, res) => {
                 mensaje = "User " + data.mail + " successfully logged in.";
                 estado = "ok";
 
-                try {
-                  // El token del usuario se genera a partir de los datos del mismo y de la clave secreta
-                  // y se almacena en una cookie
+                req.session.user = {
+                  id: userResult.id,
+                  nombreCompleto: userResult.nombreCompleto,
+                  email: userResult.email,
+                  confirmado: userResult.confirmado,
+                  activo: userResult.activo,
+                  rol: userResult.rol,
+                  fechaLogin: data.loginDate
+                };
 
-                  let userData = {
-                    id: userResult.id,
-                    nombreCompleto: userResult.nombreCompleto,
-                    email: userResult.email,
-                    confirmado: userResult.confirmado,
-                    rol: userResult.rol,
-                    fechaLogin: userResult.fechaLogin
-                  };
-
-                  req.session.user = userData;
-
-                  console.log("Sesion creada al usuario ", req.session.user.email);
-
-                } catch (error) {
-                  console.log("Error en el token: ", error);
-                }
+                console.log("Sesion creada al usuario ", req.session.user.email);
               }
 
               resultado = {
@@ -222,12 +219,11 @@ router.post('/api/register', (req, res) => {
 
 router.get('/user/logout', (req, res) => {
 
-  req.session.destroy(function (err) {
+  if (typeof req.session.user !== 'undefined') {
+    req.session.destroy();
     console.log("Sesion destruida");
-  });
-
+  }
   res.redirect('/login');
-
 });
 
 function verificarSesion(req, res, next) {

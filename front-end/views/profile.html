@@ -31,10 +31,9 @@
       <div class="col-md-6">
         <div class="profile-head">
           <h5>
-            Nombre Completo
+            <b>Perfil de usuario</b>
           </h5>
           <h6>
-            example@example.com
           </h6>
 
           <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -52,57 +51,57 @@
     </div>
     <div class="row">
 
-      <div class="col-md-4">
-        <!--<div class="profile-work">
-            <p>LINKS DE TRABAJO</p>
-            <a href="">Website Link</a><br/>
-            <a href="">Perfil de LinkedIn</a><br/>
-            <a href="">Perfil de Github</a><br/>
-            <a href="">Perfil de Stack Overflow</a>
-        </div>-->
-      </div>
+      <div class="col-md-4"></div>
 
       <div class="col-md-8">
         <div class="tab-content profile-tab" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
               <div class="col-md-6">
-                <label>User Id</label>
+                <label>Nombre</label>
               </div>
               <div class="col-md-6">
-                <p>ID del Usuario</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Name</label>
-              </div>
-              <div class="col-md-6">
-                <p>Nombre Completo</p>
+                <p><%= nombre %></p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label>Email</label>
+                <label>Correo electrónico</label>
               </div>
               <div class="col-md-6">
-                <p>example@example.com</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <label>Phone</label>
-              </div>
-              <div class="col-md-6">
-                <p>000 000 0000</p>
+                <p><%= correo %></p>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6">
-                <label>Profesión</label>
+                <label>Cuenta confirmada</label>
               </div>
               <div class="col-md-6">
-                <p>Programador</p>
+                <p><%= confirmado %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Cuenta activa</label>
+              </div>
+              <div class="col-md-6">
+                <p><%= activo %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Rol</label>
+              </div>
+              <div class="col-md-6">
+                <p><%= rol %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Fecha login</label>
+              </div>
+              <div class="col-md-6">
+                <p><%= fechaLogin %></p>
               </div>
             </div>
           </div>

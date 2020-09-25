@@ -64,6 +64,8 @@ function register() {
 
     let resultado = enviarDatosAjax(url, data, 'post');
 
+    console.log(resultado);
+
     if (resultado.estado === 'ok') {
 
       cleanRegistrationInputs();
@@ -76,28 +78,19 @@ function register() {
     } else {
       cleanPasswordsRegister();
 
-      colorInput($("#inputCreateEmail"), "red");
+      cleanRegistrationInputs();
+      cleanInputsColors();
+
       colorInput($("#inputCreatePassword"), "");
       colorInput($("#inputRepeatPassword"), "");
 
       $("#successAlert").hide();
-      $(".alertMessage").text("• No se pudo registrar al usuario porque el email ingresado ya existe.");
+      //$(".alertMessage").text("• No se pudo registrar al usuario porque el email ingresado ya existe.");
+      $(".alertMessage").text("• " + resultado.mensaje);
       $("#failureAlert").show();
     }
   }
   return false;
-}
-
-function profile() {
-
-  const url = 'http://localhost:3000/api/profile';
-  const method = 'get';
-
-  $.ajax({
-    url: url,
-    method: method,
-
-  });
 }
 
 function enviarDatosAjax(url, data, method) {

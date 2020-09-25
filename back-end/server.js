@@ -2,10 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
-// Analizar cookies en las peticiones entrantes
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const secret_key = require('../back-end/keys/keys');
 const server = express();
 
 const dir_raiz = 'D:/Xampp/htdocs/secure-web-login/';
@@ -16,13 +12,6 @@ server.set('port', 3000);
 // Dar formato más organizado al json
 server.set('json spaces', 2);
 
-// En la cookie se guarda el sessionID, encriptado a partir del string secret
-server.use(session({
-  secret: secret_key,
-  resave: false,
-  saveUninitialized: false,
-}));
-
 // Ruta archivos estáticos
 server.use(express.static(path.join(dir_raiz, 'front-end')));
 server.set('views', dir_raiz + 'front-end/views/');
@@ -32,15 +21,12 @@ server.set('view engine', 'html');
 // MIDDLEWARES
 server.use(morgan('dev'));
 server.use(bodyParser.json());
-server.use(cookieParser());
 
 // Recibir y comprender los datos que vienen de un formulario HTML (req.body)
 // extended true acepta cualquier tipo, no solo texto
 server.use(bodyParser.urlencoded({
   extended: true,
 }));
-
-server.set("llave", secret_key);
 
 // RUTAS
 const {router} = require('./routes/routes');

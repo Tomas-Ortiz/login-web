@@ -1,9 +1,11 @@
-// Router es una clase de express
 const {Router} = require('express');
 const router = Router();
 const pool = require('../data/connection');
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const secret_key = require('../keys/keys');
+var LocalStorage = require('node-localstorage').LocalStorage,
+  localStorage = new LocalStorage('./scratch');
 
 // saltRounds define el costo de procesado de los datos
 // Cuanto más alto es el número, más tiempo se requiere para calcular el hash asociado a la password
@@ -13,28 +15,33 @@ router.get('/register', (req, res) => {
   res.render('register.html');
 });
 
-router.get('/login', verificarSesion, (req, res) => {
+router.get('/login', verificarToken, (req, res) => {
 
-  if (res.verificado === 'ok') {
+  if (res.resultado.verificado) {
     res.redirect('/user/profile');
   } else {
     res.render('login.html');
   }
 });
 
-// Ruta protegida, se requiere JWT para acceder
-// verificarToken actúa como middleware
-router.get('/user/profile', verificarSesion, (req, res) => {
+// Ruta protegida, se requiere un token para acceder
+// No caché para esta url. se evita que se cargue sin hacer la petición
+router.get('/user/profile', noCache, verificarToken, (req, res) => {
 
-  if (res.verificado === 'ok') {
+  if (res.resultado.verificado) {
+
+    // Para ahorrar consultas a la bd se obtienen los datos del usuario directamente del token
+    let user = req.userData;
+
     res.render('profile.html', {
-      nombre: req.session.user.nombreCompleto,
-      correo: req.session.user.email,
-      confirmado: req.session.user.confirmado,
-      activo: req.session.user.activo,
-      rol: req.session.user.rol,
-      fechaLogin: req.session.user.fechaLogin
+      nombre: user.nombreCompleto,
+      correo: user.email,
+      confirmado: user.confirmado,
+      activo: user.activo,
+      rol: user.rol,
+      fechaLogin: user.fechaLogin
     });
+
   } else {
     res.redirect('/login');
   }
@@ -55,93 +62,111 @@ router.post('/api/login', (req, res) => {
   //Search database for the corresponding email and select both hashed password and email
   query = 'SELECT * FROM users WHERE email = ?';
 
-  pool.query(query, data.mail, (error, result) => {
+  pool.getConnection(function (err, connection) {
+    pool.query(query, data.mail, (error, result) => {
+      if (error) {
+      }
+      try {
+        if (result.length > 0) {
 
-    if (result.length > 0) {
+          let userResult = result[0];
 
-      let userResult = result[0];
+          data.hashedPassword = userResult.contraseña;
 
-      data.hashedPassword = userResult.contraseña;
+          bcrypt.compare(data.password, data.hashedPassword, (error, isMatch) => {
 
-      bcrypt.compare(data.password, data.hashedPassword, (error, isMatch) => {
-
-        if (error) {
-
-          resultado = {
-            mensaje: "An error has ocurred trying to encrypt your password",
-            estado: "error"
-          };
-
-          res.send(resultado);
-
-        } else if (isMatch) {
-
-          if (userResult.activo === 0) {
-
-            resultado = {
-              mensaje: "No puedes iniciar sesión debido a que la cuenta se encuentra bloqueada.",
-              estado: "error"
-            };
-
-            res.send(resultado);
-
-          } else {
-
-            query = 'UPDATE users SET fechaLogin = ? WHERE email = ?';
-
-            pool.query(query, [data.loginDate, data.mail], (error, result) => {
-
-              if (error) {
-                mensaje = "Error al actualizar la fecha de login.";
-                estado = "error";
-              } else {
-                mensaje = "User " + data.mail + " successfully logged in.";
-                estado = "ok";
-
-                req.session.user = {
-                  id: userResult.id,
-                  nombreCompleto: userResult.nombreCompleto,
-                  email: userResult.email,
-                  confirmado: userResult.confirmado,
-                  activo: userResult.activo,
-                  rol: userResult.rol,
-                  fechaLogin: data.loginDate
-                };
-
-                console.log("Sesion creada al usuario ", req.session.user.email);
-              }
+            if (error) {
 
               resultado = {
-                mensaje: mensaje,
-                estado: estado,
+                mensaje: "An error has ocurred trying to encrypt your password",
+                estado: "error"
               };
 
-              console.log(mensaje);
               res.send(resultado);
 
-            });
-          }
+            } else if (isMatch) {
 
+              if (userResult.activo === 0) {
+
+                resultado = {
+                  mensaje: "No puedes iniciar sesión debido a que la cuenta se encuentra bloqueada.",
+                  estado: "error"
+                };
+
+                res.send(resultado);
+
+              } else {
+
+                query = 'UPDATE users SET fechaLogin = ? WHERE email = ?';
+
+                pool.query(query, [data.loginDate, data.mail], (error, result) => {
+
+                  try {
+                    if (error) {
+                      mensaje = "Error al actualizar la fecha de login.";
+                      estado = "error";
+                    } else {
+                      mensaje = "User " + data.mail + " successfully logged in.";
+                      estado = "ok";
+
+                      let userData = {
+                        id: userResult.id,
+                        nombreCompleto: userResult.nombreCompleto,
+                        email: userResult.email,
+                        confirmado: userResult.confirmado,
+                        activo: userResult.activo,
+                        rol: userResult.rol,
+                        fechaLogin: data.loginDate
+                      };
+
+                      console.log(userResult.id);
+                      // Se genera el token al usuario y se guarda en el localStorage
+                      generarToken(userData);
+                    }
+
+                    resultado = {
+                      mensaje: mensaje,
+                      estado: estado,
+                    };
+
+                    console.log(mensaje);
+                    res.send(resultado);
+
+                  } catch (e) {
+                    resultado = {
+                      mensaje: "Error interno del servidor: " + e,
+                      estado: "error"
+                    };
+                    res.send(resultado);
+                  }
+                });
+              }
+            } else {
+              mensaje = "Correo electrónico o contraseña incorrectos.";
+              estado = "error";
+              resultado = {
+                mensaje: mensaje,
+                estado: estado
+              };
+              console.log(mensaje);
+              res.send(resultado);
+            }
+          });
         } else {
-          mensaje = "Correo electrónico o contraseña incorrectos.";
-          estado = "error";
           resultado = {
-            mensaje: mensaje,
-            estado: estado
+            mensaje: "No existe ningún usuario con ese correo electrónico.",
+            estado: "error"
           };
-
-          console.log(mensaje);
           res.send(resultado);
         }
-      });
-
-    } else {
-      resultado = {
-        mensaje: "No existe ningún usuario con ese correo electrónico.",
-        estado: "error"
-      };
-      res.send(resultado);
-    }
+      } catch (e) {
+        resultado = {
+          mensaje: "Error interno del servidor: " + e,
+          estado: "error"
+        };
+        res.send(resultado);
+      }
+    });
   });
 });
 
@@ -151,94 +176,139 @@ router.post('/api/register', (req, res) => {
   let mensaje = '', estado = '', resultado = '', query;
 
   // Antes de insertar al usuario, se debe verificar si no existe ya el email ingresado
-
   query = 'SELECT email FROM users WHERE email = ?';
 
   pool.query(query, req.body.email, (error, result) => {
+    try {
+      if (result.length > 0) {
+        resultado = {
+          mensaje: "No se pudo registrar al usuario porque el email ingresado ya existe.",
+          estado: "error"
+        };
+        res.send(resultado);
+      } else {
+        const user = {
+          nombreCompleto: req.body.nombreCompleto,
+          email: req.body.email,
+          contraseña: req.body.contrasenia,
+          activo: 1,
+          fechaCreado: req.body.fechaCreado
+        };
 
-    if (result.length > 0) {
+        //Encriptación de la contraseña
+        bcrypt.hash(user.contraseña, BCRYPT_SALT_ROUNDS, (error, hashedPassword) => {
 
-      resultado = {
-        mensaje: "El email ya existe, intenta con otro diferente.",
-        estado: "error"
-      };
-
-      res.send(resultado);
-
-    } else {
-
-      const user = {
-        nombreCompleto: req.body.nombreCompleto,
-        email: req.body.email,
-        contraseña: req.body.contrasenia,
-        activo: 1,
-        fechaCreado: req.body.fechaCreado
-      };
-
-      //Encriptación de la contraseña
-      bcrypt.hash(user.contraseña, BCRYPT_SALT_ROUNDS, (error, hashedPassword) => {
-
-        if (error) {
-
-          resultado = {
-            mensaje: "Error en el encriptado de la contraseña.",
-            estado: "error"
-          };
-
-          res.send(resultado);
-
-        } else {
-
-          user.contraseña = hashedPassword;
-
-          query = 'INSERT INTO users SET ?';
-
-          pool.query(query, user, (error, result) => {
-
-            if (error) {
-              mensaje = "Error al registrar al usuario.";
-              estado = "error";
-            } else {
-              console.log("Se insertó el usuario: " + user.nombreCompleto + ", con id: ", result.insertId);
-              mensaje = `Usuario ${user.nombreCompleto} registrado exitosamente.`;
-              estado = "ok";
-            }
+          if (error) {
 
             resultado = {
-              mensaje: mensaje,
-              estado: estado
+              mensaje: "Error en el encriptado de la contraseña.",
+              estado: "error"
             };
 
             res.send(resultado);
-          });
-        }
-      });
+
+          } else {
+
+            user.contraseña = hashedPassword;
+
+            query = 'INSERT INTO users SET ?';
+
+            pool.query(query, user, (error, result) => {
+              try {
+                if (error) {
+                  mensaje = "Error al registrar al usuario.";
+                  estado = "error";
+                } else {
+                  mensaje = `Usuario ${user.nombreCompleto} con id ${result.insertId} registrado exitosamente.`;
+                  estado = "ok";
+                  console.log(mensaje);
+                }
+                resultado = {
+                  mensaje: mensaje,
+                  estado: estado
+                };
+                res.send(resultado);
+              } catch (e) {
+                resultado = {
+                  mensaje: "Error interno del servidor: " + e,
+                  estado: "error"
+                };
+                res.send(resultado);
+              }
+            });
+          }
+        });
+      }
+    } catch (e) {
+      resultado = {
+        mensaje: "Error interno del servidor: " + e,
+        estado: "error"
+      };
+      res.send(resultado);
     }
   });
 });
 
 router.get('/user/logout', (req, res) => {
 
-  if (typeof req.session.user !== 'undefined') {
-    req.session.destroy();
-    console.log("Sesion destruida");
+  if (localStorage.getItem('token')) {
+    localStorage.removeItem('token');
+    console.log("Token destruido.");
   }
   res.redirect('/login');
 });
 
-function verificarSesion(req, res, next) {
+// Se agregan estos encabezados en la respuesta
+function noCache(req, res, next) {
+
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+
+  next();
+}
+
+function verificarToken(req, res, next) {
+
+  let resultado, mensaje, verificado;
+
+  const token = localStorage.getItem('token');
 
   try {
-    if (req.session.user) {
-      res.verificado = "ok";
+    if (token) {
+      // data retorna los datos descifrados contenidos en el token
+      jwt.verify(token, secret_key, (error, data) => {
+        if (error) {
+          mensaje = "Error, token inválido.";
+          verificado = false;
+        } else {
+          mensaje = "Token válido.";
+          verificado = true;
+          req.userData = data.userData;
+        }
+      });
     } else {
-      res.verificado = "error";
+      mensaje = "Se requiere un token.";
+      verificado = false;
     }
-  } catch (e) {
-    res.verificado = "error";
-    console.log("Error al verificar la sesion del usuario.");
+  } catch (error) {
+    mensaje = "Ha ocurrido un error inesperado.";
+    verificado = false;
   }
+  resultado = {
+    mensaje: mensaje,
+    verificado: verificado
+  };
+  res.resultado = resultado;
   next();
+}
+
+function generarToken(userData) {
+
+  const userToken = jwt.sign({userData}, secret_key);
+  localStorage.setItem('token', userToken);
+
+  console.log("Token generado al usuario ", userData.nombreCompleto, ":", userToken);
 }
 
 /*
@@ -299,6 +369,4 @@ function updateDB(query, fields, successfulMessage, failureMessage, res){
     });
 }
 */
-
-// Se exporta la constante router para permitir requerirla desde otro archivo
 exports.router = router;

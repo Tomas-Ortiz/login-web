@@ -1,12 +1,9 @@
-function getCurrentDate() {
-  return new Date().toLocaleDateString();
-}
-
 function login() {
 
   let email = $("#inputEmail").val();
   let contrasenia = $("#inputPassword").val();
   let fechaLogin = getCurrentDate().toString();
+  let horaLogin = getCurrentTime().toString();
 
   if (inputsLoginAreValid()) {
 
@@ -15,7 +12,8 @@ function login() {
     const data = {
       email: email,
       contrasenia: contrasenia,
-      fechaLogin: fechaLogin
+      fechaLogin: fechaLogin,
+      horaLogin: horaLogin
     };
 
     let result = enviarDatosAjax(url, data, 'post');
@@ -112,3 +110,11 @@ function enviarDatosAjax(url, data, method) {
   return resultado;
 }
 
+function getCurrentDate() {
+  return new Date().toLocaleDateString();
+}
+
+function getCurrentTime() {
+  let today = new Date();
+  return today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+}

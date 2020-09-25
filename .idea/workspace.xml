@@ -63,7 +63,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Dice" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -185,7 +185,7 @@
       <workItem from="1600790105003" duration="10923000" />
       <workItem from="1600802089463" duration="13918000" />
       <workItem from="1600950494357" duration="21877000" />
-      <workItem from="1601033172261" duration="3354000" />
+      <workItem from="1601033172261" duration="14742000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore file">
       <created>1599524560787</created>

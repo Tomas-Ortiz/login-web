@@ -39,7 +39,7 @@ router.get('/user/profile', noCache, verificarToken, (req, res) => {
       confirmado: user.confirmado,
       activo: user.activo,
       rol: user.rol,
-      fechaLogin: user.fechaLogin
+      fechaCreado: user.fechaCreado
     });
 
   } else {
@@ -56,117 +56,143 @@ router.post('/api/login', (req, res) => {
     mail: req.body.email,
     password: req.body.contrasenia,
     hashedPassword: '',
-    loginDate: req.body.fechaLogin
+    loginDate: req.body.fechaLogin,
+    loginTime: req.body.horaLogin
   };
 
-  //Search database for the corresponding email and select both hashed password and email
-  query = 'SELECT * FROM users WHERE email = ?';
+  pool.getConnection(function (error, connection) {
+    connection.beginTransaction(function (error) {
+        if (error) {
+          connection.rollback(function () {
+            connection.release();
+            throw error;
+          });
+        }
 
-  pool.getConnection(function (err, connection) {
-    pool.query(query, data.mail, (error, result) => {
-      if (error) {
-      }
-      try {
-        if (result.length > 0) {
-
-          let userResult = result[0];
-
-          data.hashedPassword = userResult.contraseña;
-
-          bcrypt.compare(data.password, data.hashedPassword, (error, isMatch) => {
+        //Search database for the corresponding email and select both hashed password and email
+        query = 'SELECT * FROM users WHERE email = ?';
+        pool.query(query, data.mail, (error, result) => {
 
             if (error) {
+              connection.rollback(function () {
+                connection.release();
+                throw error;
+              });
+            }
 
+            try {
+              if (result.length > 0) {
+
+                let userResult = result[0];
+
+                data.hashedPassword = userResult.contraseña;
+
+                bcrypt.compare(data.password, data.hashedPassword, (error, isMatch) => {
+
+                  if (error) {
+                    resultado = {
+                      mensaje: "Error al encriptar la contraseña.",
+                      estado: "error"
+                    };
+
+                    res.send(resultado);
+
+                  } else if (isMatch) {
+
+                    if (userResult.activo === 0) {
+                      resultado = {
+                        mensaje: "No puedes iniciar sesión debido a que la cuenta se encuentra bloqueada.",
+                        estado: "error"
+                      };
+
+                      res.send(resultado);
+
+                    } else {
+                      query = 'INSERT INTO users_logs SET usuario_id = ? , fecha_Login = ?, hora_login = ?';
+                      pool.query(query, [userResult.id, data.loginDate, data.loginTime], (error, result) => {
+                        if (error) {
+                          connection.rollback(function () {
+                            connection.release();
+                            throw error;
+                          })
+                        }
+                        // commit en la última consulta
+                        connection.commit(function (error) {
+                          if (error) {
+                            connection.rollback(function () {
+                              connection.release();
+                              throw error;
+                            })
+                          }
+                          connection.release();
+                        });
+
+                        try {
+
+                          let userData = {
+                            id: userResult.id,
+                            nombreCompleto: userResult.nombreCompleto,
+                            email: userResult.email,
+                            confirmado: userResult.confirmado,
+                            activo: userResult.activo,
+                            rol: userResult.rol,
+                            fechaCreado: userResult.fechaCreado
+                          };
+
+                          // Se genera el token al usuario con sus datos y se guarda en el localStorage
+                          generarToken(userData);
+
+                          resultado = {
+                            mensaje: "Usuario " + data.mail + " ha iniciado sesión correctamente.",
+                            estado: "ok",
+                          };
+
+                          res.send(resultado);
+
+                        } catch (e) {
+                          resultado = {
+                            mensaje: "Error interno del servidor: " + e,
+                            estado: "error"
+                          };
+
+                          res.send(resultado);
+
+                        }
+                      });
+                    }
+                  } else {
+                    mensaje = "Correo electrónico o contraseña incorrectos.";
+                    estado = "error";
+                    resultado = {
+                      mensaje: mensaje,
+                      estado: estado
+                    };
+
+                    res.send(resultado);
+
+                  }
+                });
+              } else {
+                resultado = {
+                  mensaje: "El correo electrónico ingresado no está registrado.",
+                  estado: "error"
+                };
+
+                res.send(resultado);
+              }
+            } catch (e) {
               resultado = {
-                mensaje: "An error has ocurred trying to encrypt your password",
+                mensaje: "Error interno del servidor: " + e,
                 estado: "error"
               };
 
               res.send(resultado);
 
-            } else if (isMatch) {
-
-              if (userResult.activo === 0) {
-
-                resultado = {
-                  mensaje: "No puedes iniciar sesión debido a que la cuenta se encuentra bloqueada.",
-                  estado: "error"
-                };
-
-                res.send(resultado);
-
-              } else {
-
-                query = 'UPDATE users SET fechaLogin = ? WHERE email = ?';
-
-                pool.query(query, [data.loginDate, data.mail], (error, result) => {
-
-                  try {
-                    if (error) {
-                      mensaje = "Error al actualizar la fecha de login.";
-                      estado = "error";
-                    } else {
-                      mensaje = "User " + data.mail + " successfully logged in.";
-                      estado = "ok";
-
-                      let userData = {
-                        id: userResult.id,
-                        nombreCompleto: userResult.nombreCompleto,
-                        email: userResult.email,
-                        confirmado: userResult.confirmado,
-                        activo: userResult.activo,
-                        rol: userResult.rol,
-                        fechaLogin: data.loginDate
-                      };
-
-                      console.log(userResult.id);
-                      // Se genera el token al usuario y se guarda en el localStorage
-                      generarToken(userData);
-                    }
-
-                    resultado = {
-                      mensaje: mensaje,
-                      estado: estado,
-                    };
-
-                    console.log(mensaje);
-                    res.send(resultado);
-
-                  } catch (e) {
-                    resultado = {
-                      mensaje: "Error interno del servidor: " + e,
-                      estado: "error"
-                    };
-                    res.send(resultado);
-                  }
-                });
-              }
-            } else {
-              mensaje = "Correo electrónico o contraseña incorrectos.";
-              estado = "error";
-              resultado = {
-                mensaje: mensaje,
-                estado: estado
-              };
-              console.log(mensaje);
-              res.send(resultado);
             }
-          });
-        } else {
-          resultado = {
-            mensaje: "No existe ningún usuario con ese correo electrónico.",
-            estado: "error"
-          };
-          res.send(resultado);
-        }
-      } catch (e) {
-        resultado = {
-          mensaje: "Error interno del servidor: " + e,
-          estado: "error"
-        };
-        res.send(resultado);
+          }
+        );
       }
-    });
+    );
   });
 });
 
@@ -178,74 +204,106 @@ router.post('/api/register', (req, res) => {
   // Antes de insertar al usuario, se debe verificar si no existe ya el email ingresado
   query = 'SELECT email FROM users WHERE email = ?';
 
-  pool.query(query, req.body.email, (error, result) => {
-    try {
-      if (result.length > 0) {
-        resultado = {
-          mensaje: "No se pudo registrar al usuario porque el email ingresado ya existe.",
-          estado: "error"
-        };
-        res.send(resultado);
-      } else {
-        const user = {
-          nombreCompleto: req.body.nombreCompleto,
-          email: req.body.email,
-          contraseña: req.body.contrasenia,
-          activo: 1,
-          fechaCreado: req.body.fechaCreado
-        };
+  pool.getConnection(function (error, connection) {
+    connection.beginTransaction(function (error) {
+      if (error) {
+        connection.rollback(function () {
+          connection.release();
+          throw error;
+        });
+      }
 
-        //Encriptación de la contraseña
-        bcrypt.hash(user.contraseña, BCRYPT_SALT_ROUNDS, (error, hashedPassword) => {
+      pool.query(query, req.body.email, (error, result) => {
 
-          if (error) {
+        if (error) {
+          connection.rollback(function () {
+            connection.release();
+            throw error;
+          })
+        }
 
+        try {
+          if (result.length > 0) {
             resultado = {
-              mensaje: "Error en el encriptado de la contraseña.",
+              mensaje: "No se pudo registrar al usuario porque el email ingresado ya existe.",
               estado: "error"
             };
 
             res.send(resultado);
 
           } else {
+            const user = {
+              nombreCompleto: req.body.nombreCompleto,
+              email: req.body.email,
+              contraseña: req.body.contrasenia,
+              activo: 1,
+              fechaCreado: req.body.fechaCreado
+            };
 
-            user.contraseña = hashedPassword;
+            bcrypt.hash(user.contraseña, BCRYPT_SALT_ROUNDS, (error, hashedPassword) => {
 
-            query = 'INSERT INTO users SET ?';
-
-            pool.query(query, user, (error, result) => {
-              try {
-                if (error) {
-                  mensaje = "Error al registrar al usuario.";
-                  estado = "error";
-                } else {
-                  mensaje = `Usuario ${user.nombreCompleto} con id ${result.insertId} registrado exitosamente.`;
-                  estado = "ok";
-                  console.log(mensaje);
-                }
+              if (error) {
                 resultado = {
-                  mensaje: mensaje,
-                  estado: estado
-                };
-                res.send(resultado);
-              } catch (e) {
-                resultado = {
-                  mensaje: "Error interno del servidor: " + e,
+                  mensaje: "Error en el encriptado de la contraseña.",
                   estado: "error"
                 };
+
                 res.send(resultado);
+
+              } else {
+                user.contraseña = hashedPassword;
+
+                query = 'INSERT INTO users SET ?';
+
+                pool.query(query, user, (error, result) => {
+                  if (error) {
+                    connection.rollback(function () {
+                      connection.release();
+                      throw  error;
+                    })
+                  }
+
+                  connection.commit(function (error) {
+                    if (error) {
+                      connection.release();
+                      throw error;
+                    }
+                    connection.release();
+                  });
+
+                  try {
+                    mensaje = `Usuario ${user.nombreCompleto} con id ${result.insertId} registrado exitosamente.`;
+                    estado = "ok";
+
+                    resultado = {
+                      mensaje: mensaje,
+                      estado: estado
+                    };
+
+                    console.log(resultado.mensaje);
+
+                    res.send(resultado);
+
+                  } catch (e) {
+                    resultado = {
+                      mensaje: "Error interno del servidor: " + e,
+                      estado: "error"
+                    };
+                    res.send(resultado);
+                  }
+                });
               }
             });
           }
-        });
-      }
-    } catch (e) {
-      resultado = {
-        mensaje: "Error interno del servidor: " + e,
-        estado: "error"
-      };
-      res.send(resultado);
-    }
+        } catch (e) {
+          resultado = {
+            mensaje: "Error interno del servidor: " + e,
+            estado: "error"
+          };
+          res.send(resultado);
+        }
+      });
+    });
   });
 });
 
@@ -253,7 +311,6 @@ router.get('/user/logout', (req, res) => {
 
   if (localStorage.getItem('token')) {
     localStorage.removeItem('token');
-    console.log("Token destruido.");
   }
   res.redirect('/login');
 });
@@ -266,6 +323,13 @@ function noCache(req, res, next) {
   res.header('Pragma', 'no-cache');
 
   next();
+}
+
+function generarToken(userData) {
+
+  const userToken = jwt.sign({userData}, secret_key);
+  localStorage.setItem('token', userToken);
+  console.log("Token generado al usuario ", userData.nombreCompleto);
 }
 
 function verificarToken(req, res, next) {
@@ -301,14 +365,6 @@ function verificarToken(req, res, next) {
   };
   res.resultado = resultado;
   next();
-}
-
-function generarToken(userData) {
-
-  const userToken = jwt.sign({userData}, secret_key);
-  localStorage.setItem('token', userToken);
-
-  console.log("Token generado al usuario ", userData.nombreCompleto, ":", userToken);
 }
 
 /*

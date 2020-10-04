@@ -3,26 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5eaf8096-3f79-4db2-a740-3b0ab7f9259a" name="Default Changelist" comment="Changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/routes/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/routes/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/web_login.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/web_login.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/scripts/sendingUserData.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/scripts/sendingUserData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/scripts/userDataValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/scripts/userDataValidation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/style/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/style/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/style/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/style/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front-end/style/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/style/register.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -38,6 +25,78 @@
     <expand />
     <select />
   </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/back-end/server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="582">
+              <caret line="45" column="44" lean-forward="true" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="keys.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/back-end/keys/keys.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="sendingUserData.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/front-end/scripts/sendingUserData.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="83" column="92" lean-forward="true" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="92" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userDataValidation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front-end/scripts/userDataValidation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web_login.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/web_login.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front-end/style/common.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1275">
+              <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/back-end/routes/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1054">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front-end/style/login.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1275">
+              <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -50,10 +109,45 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/back-end/package.json" />
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="960" />
+    <option name="height" value="1040" />
+  </component>
   <component name="ProjectId" id="1h73CbKst3tBivAGQXbF83b1SW8" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="secure-web-login" type="b2602c69:ProjectViewProjectNode" />
+              <item name="secure-web-login" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -63,7 +157,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Dice" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -73,6 +167,201 @@
       <recent name="C:\xampp\htdocs\secure-web-login\resources" />
       <recent name="C:\xampp\htdocs\secure-web-login\front-end\scripts" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/back-end/package-lock.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/back-end/package.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/back-end/routes/routes.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/back-end/server.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/database/web_login.sql</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/scripts/sendingUserData.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/scripts/userDataValidation.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/style/common.css</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/back-end/keys/keys.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap-grid.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap-grid.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap-grid.min.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap-grid.min.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap-reboot.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap-reboot.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap-reboot.min.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap-reboot.min.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap.min.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/css/bootstrap.min.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/js/bootstrap.bundle.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/js/bootstrap.bundle.js.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/js/bootstrap.bundle.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/js/bootstrap.bundle.min.js.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/js/bootstrap.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/js/bootstrap.js.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/js/bootstrap.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/bootstrap/js/bootstrap.min.js.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-Black.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-BlackItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-Bold.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-BoldItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-Italic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-Light.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-LightItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-Medium.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-MediumItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-Regular.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-Thin.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/fonts/roboto/Roboto-ThinItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/jQuery/jquery-3.5.1.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/media/default-profile-picture.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/resources/media/icon.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/views/login.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/views/profile.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/views/register.html</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/login.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/profile.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/front-end/register.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap-grid.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap-grid.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap-grid.min.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap-grid.min.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap-reboot.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap-reboot.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap-reboot.min.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap-reboot.min.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap.min.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/css/bootstrap.min.css.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/js/bootstrap.bundle.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/js/bootstrap.bundle.js.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/js/bootstrap.bundle.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/js/bootstrap.bundle.min.js.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/js/bootstrap.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/js/bootstrap.js.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/js/bootstrap.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/bootstrap/js/bootstrap.min.js.map</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-Black.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-BlackItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-Bold.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-BoldItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-Italic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-Light.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-LightItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-Medium.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-MediumItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-Regular.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-Thin.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/fonts/roboto/Roboto-ThinItalic.ttf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/jQuery/jquery-3.5.1.min.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/media/default-profile-picture.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/resources/media/icon.png</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -86,23 +375,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.login.html">
-    <configuration name="Login" type="JavascriptDebugType" uri="http://localhost/secure-web-login/front-end/login.html">
-      <method v="2" />
-    </configuration>
-    <configuration name="login.html (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/public/login.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
-    <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/views/login.html">
-      <method v="2" />
-    </configuration>
-    <configuration name="profile.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/views/profile.html">
-      <method v="2" />
-    </configuration>
-    <configuration name="register.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/views/register.html">
-      <method v="2" />
-    </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JavaScript Debug.Login">
+    <configuration name="Login" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost/secure-web-login/front-end/login.html" />
+    <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/index.html" />
+    <configuration name="login.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/login.html" />
+    <configuration name="profile.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/profile.html" />
+    <configuration name="register.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/secure-web-login/front-end/register.html" />
+    <configuration name="start" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -110,23 +389,22 @@
       </scripts>
       <node-interpreter value="project" />
       <envs />
-      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.Login" />
+      <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="JavaScript Debug.login.html" />
       <item itemvalue="JavaScript Debug.register.html" />
       <item itemvalue="JavaScript Debug.profile.html" />
-      <item itemvalue="JavaScript Debug.login.html (1)" />
       <item itemvalue="npm.start" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.login.html" />
-        <item itemvalue="JavaScript Debug.login.html (1)" />
         <item itemvalue="JavaScript Debug.register.html" />
         <item itemvalue="npm.start" />
         <item itemvalue="JavaScript Debug.profile.html" />
+        <item itemvalue="JavaScript Debug.login.html" />
+        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -172,20 +450,8 @@
       <workItem from="1600535878769" duration="18068000" />
       <workItem from="1600615411131" duration="3324000" />
       <workItem from="1600618789966" duration="13642000" />
-      <workItem from="1600639753579" duration="3840000" />
-      <workItem from="1600705478572" duration="12027000" />
-      <workItem from="1600719405608" duration="754000" />
-      <workItem from="1600720662329" duration="6663000" />
-      <workItem from="1600731343353" duration="175000" />
-      <workItem from="1600731561651" duration="13998000" />
-      <workItem from="1600776492626" duration="6961000" />
-      <workItem from="1600783511364" duration="923000" />
-      <workItem from="1600784468492" duration="2183000" />
-      <workItem from="1600786699260" duration="3353000" />
-      <workItem from="1600790105003" duration="10923000" />
-      <workItem from="1600802089463" duration="13918000" />
-      <workItem from="1600950494357" duration="21877000" />
-      <workItem from="1601033172261" duration="14742000" />
+      <workItem from="1600639753579" duration="4421000" />
+      <workItem from="1600981647611" duration="2632000" />
     </task>
     <task id="LOCAL-00001" summary="Updated .gitignore file">
       <created>1599524560787</created>
@@ -222,8 +488,44 @@
       <option name="project" value="LOCAL" />
       <updated>1600560582739</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Finished the back-end of the login&#10;-A SUCCESS alert shows if the user entered the correct inputs&#10;-A FAILURE alert shows if the user entered the wrong inputs&#10;-A login date is added to the database when the user logs in&#10;&#10;General changes to css files&#10;&#10;Fixes to bootstrap alerts&#10;-Added a div with the class &quot;alertMessage&quot; inside the alerts in the register and login html docs&#10;-Added an alert heading for each alert&#10;-The register.html doc now shows alerts depending on the errors of the inputs&#10;&#10;Updated web_login.sql file&#10;&#10;There's a bug where the success alert doesn't show when the user successfully registers a new account. The failure alerts work fine.">
+      <created>1600644003541</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1600644003541</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2514000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="960" height="1040" extended-state="0" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5011111" side_tool="true" weight="0.25027686" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32890365" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32861805" />
+      <window_info id="npm" order="2" sideWeight="0.5005537" side_tool="true" weight="0.30333334" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49888888" visible="true" weight="0.25027686" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4994463" visible="true" weight="0.23555556" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3297062" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -234,12 +536,21 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated .gitignore file" />
@@ -248,6 +559,344 @@
     <MESSAGE value="Updated .gitignore" />
     <MESSAGE value="Updated userDataValidation.js file&#10;&#10;-Added REGEX expressions to check if the inputs of the registration forms match&#10;-Added change of colors if the inputs are valid or not (input border's and text changes to red or green)&#10;-Changed the names of some functions" />
     <MESSAGE value="Added cors module" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added cors module" />
+    <MESSAGE value="Finished the back-end of the login&#10;-A SUCCESS alert shows if the user entered the correct inputs&#10;-A FAILURE alert shows if the user entered the wrong inputs&#10;-A login date is added to the database when the user logs in&#10;&#10;General changes to css files&#10;&#10;Fixes to bootstrap alerts&#10;-Added a div with the class &quot;alertMessage&quot; inside the alerts in the register and login html docs&#10;-Added an alert heading for each alert&#10;-The register.html doc now shows alerts depending on the errors of the inputs&#10;&#10;Updated web_login.sql file&#10;&#10;There's a bug where the success alert doesn't show when the user successfully registers a new account. The failure alerts work fine." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished the back-end of the login&#10;-A SUCCESS alert shows if the user entered the correct inputs&#10;-A FAILURE alert shows if the user entered the wrong inputs&#10;-A login date is added to the database when the user logs in&#10;&#10;General changes to css files&#10;&#10;Fixes to bootstrap alerts&#10;-Added a div with the class &quot;alertMessage&quot; inside the alerts in the register and login html docs&#10;-Added an alert heading for each alert&#10;-The register.html doc now shows alerts depending on the errors of the inputs&#10;&#10;Updated web_login.sql file&#10;&#10;There's a bug where the success alert doesn't show when the user successfully registers a new account. The failure alerts work fine." />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/back-end/data/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="115" column="45" selection-start-line="115" selection-start-column="45" selection-end-line="115" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="66" selection-start-line="55" selection-start-column="66" selection-end-line="55" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/data/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/scripts/sendingUserData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/scripts/sendingUserData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="59" column="13" lean-forward="true" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/data/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="33" selection-start-column="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/data/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/scripts/sendingUserData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="67" column="6" lean-forward="true" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="33" selection-start-column="33" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/data/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/scripts/sendingUserData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="10" lean-forward="true" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="64" column="13" lean-forward="true" selection-start-line="64" selection-start-column="13" selection-end-line="64" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/scripts/sendingUserData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/data/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="62" lean-forward="true" selection-start-line="25" selection-start-column="62" selection-end-line="25" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/index.html" />
+    <entry file="file://$PROJECT_DIR$/front-end/style/profile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1152" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/node_modules/express/lib/response.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="97" column="34" lean-forward="true" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/scripts/currentDate.js" />
+    <entry file="file://$PROJECT_DIR$/back-end/data/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/style/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/style/register.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/style/common.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/web_login.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/scripts/userDataValidation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/routes/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/keys/keys.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/back-end/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="45" column="44" lean-forward="true" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/scripts/sendingUserData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="83" column="92" lean-forward="true" selection-start-line="83" selection-start-column="51" selection-end-line="83" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

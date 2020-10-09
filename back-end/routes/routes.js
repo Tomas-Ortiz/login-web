@@ -28,7 +28,7 @@ let resultado = {
 //TEST SEND EMAILS
 router.get('/send-email', (req, res) => {
   let send = mailer.sendMailToUser;
-  let message = send("juanaugustolombino@protonmail.ch", 20);
+  let message = send("juanaugustolombino@protonmail.ch", "This_is_the_hashed_mail", 20);
   res.send(message)
 });
 
@@ -369,12 +369,9 @@ router.post('/api/register', (req, res) => {
                       if(error){
                         resultado.mensaje = "Error en el encriptado de la contraseña.";
                         res.send(resultado);
-                      } else {
-
-                        user.email = mailHashed;
 
                         //User registered successfully, now try to send the verification email
-                        mailer.sendMailToUser(user.email, user.token);
+                        mailer.sendMailToUser(user.email, mailHashed, user.token);
 
                         res.send(resultado);
 

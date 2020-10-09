@@ -5,13 +5,12 @@ let Mailer = (function() {
 
     return {
         // send mail with defined transport object
-        sendMailToUser: function(mail, token) {
+        sendMailToUser: function(decryptedMail, hashedMail, token) {
 
-            let userMail = mail;
-            let mailBody = getMailBody(userMail, token);
+            let mailBody = getMailBody(hashedMail, token);
 
             let resultado = {
-                mensaje: "Message is being sent to USER: "+userMail + "\nwith token: "+token,
+                mensaje: "Message is being sent to USER: "+decryptedMail + " with token: "+token,
                 estado: "sending"
             };
 
@@ -21,7 +20,7 @@ let Mailer = (function() {
             console.log("Password: %s", credentials.getPassword());
             console.log("---------------------");
             console.log("USER credentials: ");
-            console.log("User: %s", userMail);
+            console.log("User: %s", decryptedMail);
             console.log("Token: %s", token);
             console.log("-----------------------------------------");
             console.log('Credentials obtained, sending message...');
@@ -36,7 +35,7 @@ let Mailer = (function() {
 
             let message = {
                 from: "SecureSite<no-reply@securesite.com>",
-                to: userMail,
+                to: decryptedMail,
                 subject: "Confirmar Registro",
                 text: "",
                 html: mailBody
@@ -61,8 +60,8 @@ let Mailer = (function() {
 
 });
 
-function getMailBody(userMail, token){
-    let url = `http://localhost:3000/reset?token=${token}&mail=${userMail}`;
+function getMailBody(hashedMail, token){
+    let url = `http://localhost:3000/confirm?token=${token}&mail=${hashedMail}`;
     return  `<h1>Secure Site<h1/>` +
             `<p>Recibiste este correo porque vos (o alguien más) solicitó crear una cuenta en nuestro sitio ` +
             `web. Haz click en el siguiente link, o copialo en el navegador para compeltar el proceso de ` +

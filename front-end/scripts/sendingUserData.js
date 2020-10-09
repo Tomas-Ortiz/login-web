@@ -1,12 +1,9 @@
-function getCurrentDate() {
-  return new Date().toLocaleDateString();
-}
-
 function login() {
 
   let email = $("#inputEmail").val();
   let contrasenia = $("#inputPassword").val();
   let fechaLogin = getCurrentDate().toString();
+  let horaLogin = getCurrentTime().toString();
 
   if (inputsLoginAreValid()) {
 
@@ -15,7 +12,8 @@ function login() {
     const data = {
       email: email,
       contrasenia: contrasenia,
-      fechaLogin: fechaLogin
+      fechaLogin: fechaLogin,
+      horaLogin: horaLogin
     };
 
     let result = enviarDatosAjax(url, data, 'post');
@@ -64,6 +62,8 @@ function register() {
 
     let resultado = enviarDatosAjax(url, data, 'post');
 
+    console.log(resultado);
+
     if (resultado.estado === 'ok') {
 
       cleanRegistrationInputs();
@@ -76,28 +76,19 @@ function register() {
     } else {
       cleanPasswordsRegister();
 
-      colorInput($("#inputCreateEmail"), "red");
+      cleanRegistrationInputs();
+      cleanInputsColors();
+
       colorInput($("#inputCreatePassword"), "");
       colorInput($("#inputRepeatPassword"), "");
 
       $("#successAlert").hide();
-      $(".alertMessage").text("• No se pudo registrar al usuario porque el email ingresado ya existe.");
+      //$(".alertMessage").text("• No se pudo registrar al usuario porque el email ingresado ya existe.");
+      $(".alertMessage").text("• " + resultado.mensaje);
       $("#failureAlert").show();
     }
   }
   return false;
-}
-
-function profile() {
-
-  const url = 'http://localhost:3000/api/profile';
-  const method = 'get';
-
-  $.ajax({
-    url: url,
-    method: method,
-
-  });
 }
 
 function enviarDatosAjax(url, data, method) {
@@ -119,3 +110,11 @@ function enviarDatosAjax(url, data, method) {
   return resultado;
 }
 
+function getCurrentDate() {
+  return new Date().toLocaleDateString();
+}
+
+function getCurrentTime() {
+  let today = new Date();
+  return today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+}

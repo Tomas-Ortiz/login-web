@@ -1,6 +1,5 @@
 const mysql = require('mysql');
 
-// Credenciales para la conexión a la BD
 const connection = {
   host: 'localhost',
   user: 'root',
@@ -9,7 +8,15 @@ const connection = {
 };
 
 // El pool de MySQL nos permite utilizar múltiples conexiones
-// a la vez en lugar de tener que manualmente abrir y cerrar conexiones múltiples
+// simultáneas, sin tener que abrir y cerrar conexiones manualmente
 const pool = mysql.createPool(connection);
+
+pool.getConnection(function (err, conex) {
+  if (err) {
+    console.log("Error en la conexión a la base de datos");
+    throw err.sqlMessage;
+  }
+  console.log("Conectado a la base de datos");
+});
 
 module.exports = pool;

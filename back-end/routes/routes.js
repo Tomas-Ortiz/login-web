@@ -72,6 +72,7 @@ router.get('/confirm/', (req, res) => {
                   console.log("DecryptedMail: %s", decryptedMail);
                   console.log("MAIL from URL: %s", url.mail);
                   resultado.mensaje = "Error al encriptar el correo";
+                  resultado.estado = "error";
                   res.send(resultado);
                 } else {
                   console.log(`USER: ${decryptedMail} is TRYING TO CONFIRM his account`);
@@ -107,12 +108,14 @@ router.get('/confirm/', (req, res) => {
 
             } else{
                 resultado.mensaje = "No user with that email exists";
+                resultado.estado = "error";
                 console.log(resultado.mensaje);
                 res.send(resultado);
             }
 
           } catch (e) {
               resultado.mensaje = "Error interno del servidor: " + e;
+              resultado.estado = "error";
               res.send(resultado);
           }
 
@@ -207,6 +210,7 @@ router.post('/api/login', (req, res) => {
                   if (error) {
 
                     resultado.mensaje = "Error al encriptar la contraseña.";
+                    resultado.estado = "error";
                     res.send(resultado);
 
                   } else if (isMatch) {
@@ -214,6 +218,7 @@ router.post('/api/login', (req, res) => {
                     if (userResult.activo === 0) {
 
                       resultado.mensaje = "No puedes iniciar sesión debido a que la cuenta se encuentra bloqueada.";
+                      resultado.estado = "error";
                       res.send(resultado);
 
                     } else {
@@ -252,14 +257,15 @@ router.post('/api/login', (req, res) => {
                           generarToken(userData);
 
 
-                          resultado.estado = "Usuario " + data.mail + " ha iniciado sesión correctamente.";
+                          resultado.mensaje = "Usuario " + data.mail + " ha iniciado sesión correctamente.";
                           resultado.estado = "ok";
 
                           res.send(resultado);
 
                         } catch (e) {
 
-                          resultado.estado = "Error interno del servidor: " + e;
+                          resultado.mensaje = "Error interno del servidor: " + e;
+                          resultado.estado = "error";
                           res.send(resultado);
 
                         }
@@ -268,6 +274,7 @@ router.post('/api/login', (req, res) => {
                   } else {
 
                     resultado.mensaje = "Correo electrónico o contraseña incorrectos.";
+                    resultado.estado = "error";
                     res.send(resultado);
 
                   }
@@ -275,12 +282,14 @@ router.post('/api/login', (req, res) => {
               } else {
 
                 resultado.mensaje = "El correo electrónico ingresado no está registrado.";
+                resultado.estado = "error";
                 res.send(resultado);
 
               }
             } catch (e) {
 
               resultado.mensaje = "Error interno del servidor: " + e;
+              resultado.estado = "error";
               res.send(resultado);
 
             }
@@ -318,6 +327,7 @@ router.post('/api/register', (req, res) => {
           if (result.length > 0) {
 
             resultado.mensaje = "No se pudo registrar al usuario porque el email ingresado ya existe.";
+            resultado.estado = "error";
             res.send(resultado);
 
           } else {
@@ -338,6 +348,7 @@ router.post('/api/register', (req, res) => {
               if (error) {
 
                 resultado.mensaje = "Error en el encriptado de la contraseña.";
+                resultado.estado = "error";
                 res.send(resultado);
 
               } else {
@@ -368,6 +379,7 @@ router.post('/api/register', (req, res) => {
 
                       if(error){
                         resultado.mensaje = "Error en el encriptado de la contraseña.";
+                        resultado.estado = "error";
                         res.send(resultado);
 
                         //User registered successfully, now try to send the verification email
@@ -381,6 +393,7 @@ router.post('/api/register', (req, res) => {
                   } catch (e) {
 
                     resultado.mensaje = "Error interno del servidor: " + e;
+                    resultado.estado = "error";
                     res.send(resultado);
                   }
                 });
@@ -389,6 +402,7 @@ router.post('/api/register', (req, res) => {
           }
         } catch (e) {
           resultado.mensaje = "Error interno del servidor: " + e;
+          resultado.estado = "error";
           res.send(resultado);
         }
       });

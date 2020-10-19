@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const connection = {
   host: 'localhost',
@@ -7,8 +7,8 @@ const connection = {
   database: 'web_login',
 };
 
-// El pool de MySQL nos permite utilizar múltiples conexiones
-// simultáneas, sin tener que abrir y cerrar conexiones manualmente
+// El pool de MySQL permite utilizar múltiples conexiones simultáneas
+// sin tener que abrir y cerrar conexiones manualmente
 const pool = mysql.createPool(connection);
 
 pool.getConnection(function (err, conex) {
@@ -19,4 +19,6 @@ pool.getConnection(function (err, conex) {
   console.log("Conectado a la base de datos");
 });
 
-module.exports = pool;
+promisePool = pool.promise();
+
+module.exports = promisePool;

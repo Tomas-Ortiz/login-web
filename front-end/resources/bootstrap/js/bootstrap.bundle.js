@@ -126,7 +126,7 @@
       return prefix;
     },
     getSelectorFromElement: function getSelectorFromElement(element) {
-      var selector = element.getAttribute('data-target');
+      var selector = element.getAttribute('Data-target');
 
       if (!selector || selector === '#') {
         var hrefAttr = element.getAttribute('href');
@@ -237,9 +237,9 @@
   var VERSION = '4.5.2';
   var DATA_KEY = 'bs.alert';
   var EVENT_KEY = "." + DATA_KEY;
-  var DATA_API_KEY = '.data-api';
+  var DATA_API_KEY = '.Data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var SELECTOR_DISMISS = '[data-dismiss="alert"]';
+  var SELECTOR_DISMISS = '[Data-dismiss="alert"]';
   var EVENT_CLOSE = "close" + EVENT_KEY;
   var EVENT_CLOSED = "closed" + EVENT_KEY;
   var EVENT_CLICK_DATA_API = "click" + EVENT_KEY + DATA_API_KEY;
@@ -393,15 +393,15 @@
   var VERSION$1 = '4.5.2';
   var DATA_KEY$1 = 'bs.button';
   var EVENT_KEY$1 = "." + DATA_KEY$1;
-  var DATA_API_KEY$1 = '.data-api';
+  var DATA_API_KEY$1 = '.Data-api';
   var JQUERY_NO_CONFLICT$1 = $.fn[NAME$1];
   var CLASS_NAME_ACTIVE = 'active';
   var CLASS_NAME_BUTTON = 'btn';
   var CLASS_NAME_FOCUS = 'focus';
-  var SELECTOR_DATA_TOGGLE_CARROT = '[data-toggle^="button"]';
-  var SELECTOR_DATA_TOGGLES = '[data-toggle="buttons"]';
-  var SELECTOR_DATA_TOGGLE = '[data-toggle="button"]';
-  var SELECTOR_DATA_TOGGLES_BUTTONS = '[data-toggle="buttons"] .btn';
+  var SELECTOR_DATA_TOGGLE_CARROT = '[Data-toggle^="button"]';
+  var SELECTOR_DATA_TOGGLES = '[Data-toggle="buttons"]';
+  var SELECTOR_DATA_TOGGLE = '[Data-toggle="button"]';
+  var SELECTOR_DATA_TOGGLES_BUTTONS = '[Data-toggle="buttons"] .btn';
   var SELECTOR_INPUT = 'input:not([type="hidden"])';
   var SELECTOR_ACTIVE = '.active';
   var SELECTOR_BUTTON = '.btn';
@@ -535,7 +535,7 @@
   });
   $(window).on(EVENT_LOAD_DATA_API, function () {
     // ensure correct active class is set to match the controls' actual values/states
-    // find all checkboxes/readio buttons inside data-toggle groups
+    // find all checkboxes/readio buttons inside Data-toggle groups
     var buttons = [].slice.call(document.querySelectorAll(SELECTOR_DATA_TOGGLES_BUTTONS));
 
     for (var i = 0, len = buttons.length; i < len; i++) {
@@ -586,7 +586,7 @@
   var VERSION$2 = '4.5.2';
   var DATA_KEY$2 = 'bs.carousel';
   var EVENT_KEY$2 = "." + DATA_KEY$2;
-  var DATA_API_KEY$2 = '.data-api';
+  var DATA_API_KEY$2 = '.Data-api';
   var JQUERY_NO_CONFLICT$2 = $.fn[NAME$2];
   var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
 
@@ -642,8 +642,8 @@
   var SELECTOR_ITEM_IMG = '.carousel-item img';
   var SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev';
   var SELECTOR_INDICATORS = '.carousel-indicators';
-  var SELECTOR_DATA_SLIDE = '[data-slide], [data-slide-to]';
-  var SELECTOR_DATA_RIDE = '[data-ride="carousel"]';
+  var SELECTOR_DATA_SLIDE = '[Data-slide], [Data-slide-to]';
+  var SELECTOR_DATA_RIDE = '[Data-ride="carousel"]';
   var PointerType = {
     TOUCH: 'touch',
     PEN: 'pen'
@@ -1025,7 +1025,7 @@
         Util.reflow(nextElement);
         $(activeElement).addClass(directionalClassName);
         $(nextElement).addClass(directionalClassName);
-        var nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10);
+        var nextElementInterval = parseInt(nextElement.getAttribute('Data-interval'), 10);
 
         if (nextElementInterval) {
           this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
@@ -1103,7 +1103,7 @@
 
       var config = _extends({}, $(target).data(), $(this).data());
 
-      var slideIndex = this.getAttribute('data-slide-to');
+      var slideIndex = this.getAttribute('Data-slide-to');
 
       if (slideIndex) {
         config.interval = false;
@@ -1173,7 +1173,7 @@
   var VERSION$3 = '4.5.2';
   var DATA_KEY$3 = 'bs.collapse';
   var EVENT_KEY$3 = "." + DATA_KEY$3;
-  var DATA_API_KEY$3 = '.data-api';
+  var DATA_API_KEY$3 = '.Data-api';
   var JQUERY_NO_CONFLICT$3 = $.fn[NAME$3];
   var Default$1 = {
     toggle: true,
@@ -1195,7 +1195,7 @@
   var DIMENSION_WIDTH = 'width';
   var DIMENSION_HEIGHT = 'height';
   var SELECTOR_ACTIVES = '.show, .collapsing';
-  var SELECTOR_DATA_TOGGLE$1 = '[data-toggle="collapse"]';
+  var SELECTOR_DATA_TOGGLE$1 = '[Data-toggle="collapse"]';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -1207,7 +1207,7 @@
       this._isTransitioning = false;
       this._element = element;
       this._config = this._getConfig(config);
-      this._triggerArray = [].slice.call(document.querySelectorAll("[data-toggle=\"collapse\"][href=\"#" + element.id + "\"]," + ("[data-toggle=\"collapse\"][data-target=\"#" + element.id + "\"]")));
+      this._triggerArray = [].slice.call(document.querySelectorAll("[Data-toggle=\"collapse\"][href=\"#" + element.id + "\"]," + ("[Data-toggle=\"collapse\"][Data-target=\"#" + element.id + "\"]")));
       var toggleList = [].slice.call(document.querySelectorAll(SELECTOR_DATA_TOGGLE$1));
 
       for (var i = 0, len = toggleList.length; i < len; i++) {
@@ -1260,7 +1260,7 @@
       if (this._parent) {
         actives = [].slice.call(this._parent.querySelectorAll(SELECTOR_ACTIVES)).filter(function (elem) {
           if (typeof _this._config.parent === 'string') {
-            return elem.getAttribute('data-parent') === _this._config.parent;
+            return elem.getAttribute('Data-parent') === _this._config.parent;
           }
 
           return elem.classList.contains(CLASS_NAME_COLLAPSE);
@@ -1412,7 +1412,7 @@
         parent = document.querySelector(this._config.parent);
       }
 
-      var selector = "[data-toggle=\"collapse\"][data-parent=\"" + this._config.parent + "\"]";
+      var selector = "[Data-toggle=\"collapse\"][Data-parent=\"" + this._config.parent + "\"]";
       var children = [].slice.call(parent.querySelectorAll(selector));
       $(children).each(function (i, element) {
         _this3._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
@@ -2198,9 +2198,9 @@
    * available space.
    * @method
    * @memberof Popper.Utils
-   * @argument {Object} data - The data object generated by update method
+   * @argument {Object} Data - The Data object generated by update method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function computeAutoPlacement(placement, refRect, popper, reference, boundariesElement) {
     var padding = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
@@ -2387,7 +2387,7 @@
 
   /**
    * Loop trough the list of modifiers and run them in order,
-   * each of them will then edit the data object.
+   * each of them will then edit the Data object.
    * @method
    * @memberof Popper.Utils
    * @param {dataObject} data
@@ -2443,7 +2443,7 @@
     // compute reference element offsets
     data.offsets.reference = getReferenceOffsets(this.state, this.popper, this.reference, this.options.positionFixed);
 
-    // compute auto placement, store placement inside the data object,
+    // compute auto placement, store placement inside the Data object,
     // modifiers will be able to edit `placement` if needed
     // and refer to originalPlacement to know the original value
     data.placement = computeAutoPlacement(this.options.placement, data.offsets.reference, this.popper, this.reference, this.options.modifiers.flip.boundariesElement, this.options.modifiers.flip.padding);
@@ -2678,20 +2678,20 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by `update` method
-   * @argument {Object} data.styles - List of style properties - values to apply to popper element
-   * @argument {Object} data.attributes - List of attribute properties - values to apply to popper element
+   * @argument {Object} Data - The Data object generated by `update` method
+   * @argument {Object} Data.styles - List of style properties - values to apply to popper element
+   * @argument {Object} Data.attributes - List of attribute properties - values to apply to popper element
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The same data object
+   * @returns {Object} The same Data object
    */
   function applyStyle(data) {
-    // any property present in `data.styles` will be applied to the popper,
+    // any property present in `Data.styles` will be applied to the popper,
     // in this way we can make the 3rd party modifiers add custom styles to it
     // Be aware, modifiers could override the properties defined in the previous
     // lines of this modifier!
     setStyles(data.instance.popper, data.styles);
 
-    // any property present in `data.attributes` will be applied to the popper,
+    // any property present in `Data.attributes` will be applied to the popper,
     // they will be set as HTML attributes of the element
     setAttributes(data.instance.popper, data.attributes);
 
@@ -2717,7 +2717,7 @@
     // compute reference element offsets
     var referenceOffsets = getReferenceOffsets(state, popper, reference, options.positionFixed);
 
-    // compute auto placement, store placement inside the data object,
+    // compute auto placement, store placement inside the Data object,
     // modifiers will be able to edit `placement` if needed
     // and refer to originalPlacement to know the original value
     var placement = computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
@@ -2734,7 +2734,7 @@
   /**
    * @function
    * @memberof Popper.Utils
-   * @argument {Object} data - The data object generated by `update` method
+   * @argument {Object} Data - The Data object generated by `update` method
    * @argument {Boolean} shouldRound - If the offsets should be rounded at all
    * @returns {Object} The popper's position offsets rounded
    *
@@ -2785,9 +2785,9 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by `update` method
+   * @argument {Object} Data - The Data object generated by `update` method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function computeStyle(data, options) {
     var x = options.x,
@@ -2872,7 +2872,7 @@
       'x-placement': data.placement
     };
 
-    // Update `data` attributes, styles and arrowStyles
+    // Update `Data` attributes, styles and arrowStyles
     data.attributes = _extends$1({}, attributes, data.attributes);
     data.styles = _extends$1({}, styles, data.styles);
     data.arrowStyles = _extends$1({}, data.offsets.arrow, data.arrowStyles);
@@ -2911,9 +2911,9 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by update method
+   * @argument {Object} Data - The Data object generated by update method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function arrow(data, options) {
     var _data$offsets$arrow;
@@ -3069,9 +3069,9 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by update method
+   * @argument {Object} Data - The Data object generated by update method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function flip(data, options) {
     // if `inner` modifier is enabled, we can't use the `flip` modifier
@@ -3166,9 +3166,9 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by update method
+   * @argument {Object} Data - The Data object generated by update method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function keepTogether(data) {
     var _data$offsets = data.offsets,
@@ -3326,11 +3326,11 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by update method
+   * @argument {Object} Data - The Data object generated by update method
    * @argument {Object} options - Modifiers configuration and options
    * @argument {Number|String} options.offset=0
    * The offset value as described in the modifier description
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function offset(data, _ref) {
     var offset = _ref.offset;
@@ -3369,9 +3369,9 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by `update` method
+   * @argument {Object} Data - The Data object generated by `update` method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function preventOverflow(data, options) {
     var boundariesElement = options.boundariesElement || getOffsetParent(data.instance.popper);
@@ -3440,9 +3440,9 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by `update` method
+   * @argument {Object} Data - The Data object generated by `update` method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function shift(data) {
     var placement = data.placement;
@@ -3473,9 +3473,9 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by update method
+   * @argument {Object} Data - The Data object generated by update method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function hide(data) {
     if (!isModifierRequired(data.instance.modifiers, 'hide', 'preventOverflow')) {
@@ -3511,9 +3511,9 @@
   /**
    * @function
    * @memberof Modifiers
-   * @argument {Object} data - The data object generated by `update` method
+   * @argument {Object} Data - The Data object generated by `update` method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {Object} The data object, properly modified
+   * @returns {Object} The Data object, properly modified
    */
   function inner(data) {
     var placement = data.placement;
@@ -3541,9 +3541,9 @@
    * make sure they are performant enough to avoid performance bottlenecks.
    *
    * @function ModifierFn
-   * @argument {dataObject} data - The data object generated by `update` method
+   * @argument {dataObject} Data - The Data object generated by `update` method
    * @argument {Object} options - Modifiers configuration and options
-   * @returns {dataObject} The data object, properly modified
+   * @returns {dataObject} The Data object, properly modified
    */
 
   /**
@@ -3878,19 +3878,19 @@
    * The `dataObject` is an object containing all the information used by Popper.js.
    * This object is passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
    * @name dataObject
-   * @property {Object} data.instance The Popper.js instance
-   * @property {String} data.placement Placement applied to popper
-   * @property {String} data.originalPlacement Placement originally defined on init
-   * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
-   * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper
-   * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
-   * @property {Object} data.styles Any CSS property defined here will be applied to the popper. It expects the JavaScript nomenclature (eg. `marginBottom`)
-   * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow. It expects the JavaScript nomenclature (eg. `marginBottom`)
-   * @property {Object} data.boundaries Offsets of the popper boundaries
-   * @property {Object} data.offsets The measurements of popper, reference and arrow elements
-   * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
-   * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
-   * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
+   * @property {Object} Data.instance The Popper.js instance
+   * @property {String} Data.placement Placement applied to popper
+   * @property {String} Data.originalPlacement Placement originally defined on init
+   * @property {Boolean} Data.flipped True if popper has been flipped by flip modifier
+   * @property {Boolean} Data.hide True if the reference element is out of boundaries, useful to know when to hide the popper
+   * @property {HTMLElement} Data.arrowElement Node used as arrow by arrow modifier
+   * @property {Object} Data.styles Any CSS property defined here will be applied to the popper. It expects the JavaScript nomenclature (eg. `marginBottom`)
+   * @property {Object} Data.arrowStyles Any CSS property defined here will be applied to the popper arrow. It expects the JavaScript nomenclature (eg. `marginBottom`)
+   * @property {Object} Data.boundaries Offsets of the popper boundaries
+   * @property {Object} Data.offsets The measurements of popper, reference and arrow elements
+   * @property {Object} Data.offsets.popper `top`, `left`, `width`, `height` values
+   * @property {Object} Data.offsets.reference `top`, `left`, `width`, `height` values
+   * @property {Object} Data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
    */
 
   /**
@@ -3938,7 +3938,7 @@
     /**
      * Callback called when the popper is created.<br />
      * By default, it is set to no-op.<br />
-     * Access Popper.js instance with `data.instance`.
+     * Access Popper.js instance with `Data.instance`.
      * @prop {onCreate}
      */
     onCreate: function onCreate() {},
@@ -3948,7 +3948,7 @@
      * on the initialization/creation of the popper, but only on subsequent
      * updates.<br />
      * By default, it is set to no-op.<br />
-     * Access Popper.js instance with `data.instance`.
+     * Access Popper.js instance with `Data.instance`.
      * @prop {onUpdate}
      */
     onUpdate: function onUpdate() {},
@@ -4113,11 +4113,11 @@
    *
    * NB: This feature isn't supported in Internet Explorer 10.
    * @name referenceObject
-   * @property {Function} data.getBoundingClientRect
+   * @property {Function} Data.getBoundingClientRect
    * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
-   * @property {number} data.clientWidth
+   * @property {number} Data.clientWidth
    * An ES6 getter that will return the width of the virtual reference element.
-   * @property {number} data.clientHeight
+   * @property {number} Data.clientHeight
    * An ES6 getter that will return the height of the virtual reference element.
    */
 
@@ -4136,7 +4136,7 @@
   var VERSION$4 = '4.5.2';
   var DATA_KEY$4 = 'bs.dropdown';
   var EVENT_KEY$4 = "." + DATA_KEY$4;
-  var DATA_API_KEY$4 = '.data-api';
+  var DATA_API_KEY$4 = '.Data-api';
   var JQUERY_NO_CONFLICT$4 = $.fn[NAME$4];
   var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
 
@@ -4166,7 +4166,7 @@
   var CLASS_NAME_DROPLEFT = 'dropleft';
   var CLASS_NAME_MENURIGHT = 'dropdown-menu-right';
   var CLASS_NAME_POSITION_STATIC = 'position-static';
-  var SELECTOR_DATA_TOGGLE$2 = '[data-toggle="dropdown"]';
+  var SELECTOR_DATA_TOGGLE$2 = '[Data-toggle="dropdown"]';
   var SELECTOR_FORM_CHILD = '.dropdown form';
   var SELECTOR_MENU = '.dropdown-menu';
   var SELECTOR_NAVBAR_NAV = '.navbar-nav';
@@ -4650,7 +4650,7 @@
   var VERSION$5 = '4.5.2';
   var DATA_KEY$5 = 'bs.modal';
   var EVENT_KEY$5 = "." + DATA_KEY$5;
-  var DATA_API_KEY$5 = '.data-api';
+  var DATA_API_KEY$5 = '.Data-api';
   var JQUERY_NO_CONFLICT$5 = $.fn[NAME$5];
   var ESCAPE_KEYCODE$1 = 27; // KeyboardEvent.which value for Escape (Esc) key
 
@@ -4687,8 +4687,8 @@
   var CLASS_NAME_STATIC = 'modal-static';
   var SELECTOR_DIALOG = '.modal-dialog';
   var SELECTOR_MODAL_BODY = '.modal-body';
-  var SELECTOR_DATA_TOGGLE$3 = '[data-toggle="modal"]';
-  var SELECTOR_DATA_DISMISS = '[data-dismiss="modal"]';
+  var SELECTOR_DATA_TOGGLE$3 = '[Data-toggle="modal"]';
+  var SELECTOR_DATA_DISMISS = '[Data-dismiss="modal"]';
   var SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
   var SELECTOR_STICKY_CONTENT = '.sticky-top';
   /**
@@ -5304,7 +5304,7 @@
 
   var SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file):|[^#&/:?]*(?:[#/?]|$))/gi;
   /**
-   * A pattern that matches safe data URLs. Only matches image, video and audio types.
+   * A pattern that matches safe Data URLs. Only matches image, video and audio types.
    *
    * Shoutout to Angular 7 https://github.com/angular/angular/blob/7.2.4/packages/core/src/sanitization/url_sanitizer.ts
    */
@@ -5735,7 +5735,7 @@
     };
 
     _proto.getTitle = function getTitle() {
-      var title = this.element.getAttribute('data-original-title');
+      var title = this.element.getAttribute('Data-original-title');
 
       if (!title) {
         title = typeof this.config.title === 'function' ? this.config.title.call(this.element) : this.config.title;
@@ -5846,10 +5846,10 @@
     };
 
     _proto._fixTitle = function _fixTitle() {
-      var titleType = typeof this.element.getAttribute('data-original-title');
+      var titleType = typeof this.element.getAttribute('Data-original-title');
 
       if (this.element.getAttribute('title') || titleType !== 'string') {
-        this.element.setAttribute('data-original-title', this.element.getAttribute('title') || '');
+        this.element.setAttribute('Data-original-title', this.element.getAttribute('title') || '');
         this.element.setAttribute('title', '');
       }
     };
@@ -6175,7 +6175,7 @@
     ;
 
     _proto._getContent = function _getContent() {
-      return this.element.getAttribute('data-content') || this.config.content;
+      return this.element.getAttribute('Data-content') || this.config.content;
     };
 
     _proto._cleanTipClass = function _cleanTipClass() {
@@ -6278,7 +6278,7 @@
   var VERSION$8 = '4.5.2';
   var DATA_KEY$8 = 'bs.scrollspy';
   var EVENT_KEY$8 = "." + DATA_KEY$8;
-  var DATA_API_KEY$6 = '.data-api';
+  var DATA_API_KEY$6 = '.Data-api';
   var JQUERY_NO_CONFLICT$8 = $.fn[NAME$8];
   var Default$6 = {
     offset: 10,
@@ -6295,7 +6295,7 @@
   var EVENT_LOAD_DATA_API$2 = "load" + EVENT_KEY$8 + DATA_API_KEY$6;
   var CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
   var CLASS_NAME_ACTIVE$2 = 'active';
-  var SELECTOR_DATA_SPY = '[data-spy="scroll"]';
+  var SELECTOR_DATA_SPY = '[Data-spy="scroll"]';
   var SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
   var SELECTOR_NAV_LINKS = '.nav-link';
   var SELECTOR_NAV_ITEMS = '.nav-item';
@@ -6462,7 +6462,7 @@
       this._clear();
 
       var queries = this._selector.split(',').map(function (selector) {
-        return selector + "[data-target=\"" + target + "\"]," + selector + "[href=\"" + target + "\"]";
+        return selector + "[Data-target=\"" + target + "\"]," + selector + "[href=\"" + target + "\"]";
       });
 
       var $link = $([].slice.call(document.querySelectorAll(queries.join(','))));
@@ -6570,7 +6570,7 @@
   var VERSION$9 = '4.5.2';
   var DATA_KEY$9 = 'bs.tab';
   var EVENT_KEY$9 = "." + DATA_KEY$9;
-  var DATA_API_KEY$7 = '.data-api';
+  var DATA_API_KEY$7 = '.Data-api';
   var JQUERY_NO_CONFLICT$9 = $.fn[NAME$9];
   var EVENT_HIDE$3 = "hide" + EVENT_KEY$9;
   var EVENT_HIDDEN$3 = "hidden" + EVENT_KEY$9;
@@ -6586,7 +6586,7 @@
   var SELECTOR_NAV_LIST_GROUP$1 = '.nav, .list-group';
   var SELECTOR_ACTIVE$2 = '.active';
   var SELECTOR_ACTIVE_UL = '> li > .active';
-  var SELECTOR_DATA_TOGGLE$4 = '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]';
+  var SELECTOR_DATA_TOGGLE$4 = '[Data-toggle="tab"], [Data-toggle="pill"], [Data-toggle="list"]';
   var SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
   var SELECTOR_DROPDOWN_ACTIVE_CHILD = '> .dropdown-menu .active';
   /**
@@ -6816,7 +6816,7 @@
     autohide: true,
     delay: 500
   };
-  var SELECTOR_DATA_DISMISS$1 = '[data-dismiss="toast"]';
+  var SELECTOR_DATA_DISMISS$1 = '[Data-dismiss="toast"]';
   /**
    * ------------------------------------------------------------------------
    * Class Definition

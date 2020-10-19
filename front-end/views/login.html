@@ -23,7 +23,7 @@
         <br>
       </div>
 
-      <form id="Login" action="http://localhost:3000/user/profile" onsubmit="return login();">
+      <form id="Login" onsubmit="login(); return false;">
         <div class="form-group">
           <input type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" required>
         </div>
@@ -48,11 +48,6 @@
       </a>
 
       <br>
-      <!--
-      <div class="forgot">
-        <a href="#">¿Olvidaste tu contraseña?</a>
-      </div>
-      -->
     </div>
   </div>
 </div>

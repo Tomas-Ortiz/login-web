@@ -29,7 +29,7 @@ server.use(bodyParser.urlencoded({
 }));
 
 // RUTAS
-const {router} = require('./routes/routes');
+const {router} = require('./Controller/controller');
 server.use(router);
 
 // INICIO DEL SERVIDOR

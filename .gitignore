@@ -46,9 +46,8 @@ dist
 # *.ipr
 
 # file: ~/.gitignore_global
-/.idea/
-/scratch/
-/ignorar
+.idea/
+scratch/
 
 # CMake
 cmake-build-*/

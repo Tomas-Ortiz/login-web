@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const accountCredentials = require('../Data/emailCredentials');
+const accountCredentials = require('../Data/credentials');
 
 let Mailer = (function () {
   return {

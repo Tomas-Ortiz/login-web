@@ -1,4 +1,4 @@
-let EmailCredentials = (function () {
+let Credentials = (function () {
   return {
     getUser: function () {
       return 'no.reply.securesite@gmail.com'
@@ -9,4 +9,4 @@ let EmailCredentials = (function () {
   }
 });
 
-module.exports = EmailCredentials();
+module.exports = Credentials();
